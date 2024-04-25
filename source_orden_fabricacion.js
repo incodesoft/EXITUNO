@@ -1643,7 +1643,7 @@ $(document).on("keyup", "#ingresarCant", function () {
         num = $(this).parents("tr").find("td:eq(8)").text();
         num = parseFloat(num);
         num = isNaN(num) ? 0 : Math.abs(num);
-        num2 = $(this).parents("tr").find('input[type="number"]').val();
+        num2 = $(this).parents("tr").find('input[id="ingresarCant"]').val();
 
         if (parseFloat(valor) > num) {
             alertify.error("El valor ingresado no puede ser mayor que " + num + "| CANTIDAD REQUERIDA");
