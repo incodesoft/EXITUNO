@@ -1747,7 +1747,7 @@ function registrar_datos() {
 
             }
 
-            if (parseFloat(cant_almacen) <= 0) {
+            if ((parseFloat(cant_almacen) <= 0) && tipo !=='RE' ) {
                 bandera2 = false;
                 alertify.error("No hay stock");
                 // Limpiar el campo
