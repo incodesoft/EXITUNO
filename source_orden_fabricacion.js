@@ -1504,8 +1504,8 @@ $(document).on('click', '#salida_2', function () {
 
         num = parseFloat(num);
         num = isNaN(num) ? 0 : Math.abs(num);
-        $(this).parents("tr").find('input[type="number"]').val(num);
-        // num2 = $(this).parents("tr").find('input[type="number"]').val();
+        $(this).parents("tr").find('input[id="ingresarCant"]').val(num);
+        // num2 = $(this).parents("tr").find('input[id="ingresarCant"]').val();
         // nuevo_valor = (num - num2).toFixed(4);
 
         // $(this).parents("tr").find("td:eq(13)").text(nuevo_valor);
