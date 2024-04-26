@@ -2241,7 +2241,7 @@ function registrar_OFS() {
             nro_producto = cod_prodc + proceso
         }
         if (descripcion === '') {
-            descripcion = 'PRODUCTO_PROCESO_' + proceso
+            descripcion = 'PP' + proceso + '_' + descripcion2
         }
         //var ingresarcantidad2 = parseFloat(ingresarcantidad);
 
