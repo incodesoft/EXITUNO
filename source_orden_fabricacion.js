@@ -1076,7 +1076,9 @@ function resumen(docentry, nro_isograf) {
         },
         success: function (x) {
             $("#tabla_ME_resumen").html(x);
-
+            $("#tabla_MateE_modal").DataTable({
+                order: [[2, 'asc']]
+            });
             $("#iso_oculto").val(nro_isograf);
 
         },
