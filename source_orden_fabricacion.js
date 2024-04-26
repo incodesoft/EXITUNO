@@ -2070,7 +2070,7 @@ function transformar_of2(docentry) {
         success: function (x) {
             $("#tabla_transformer2").html(x);
             $("#table_transfor_2da").DataTable({
-                order: [[1, 'asc']]
+                order: [[2, 'asc']]
             });
         },
         error: function (jqXHR, estado, error) { },
