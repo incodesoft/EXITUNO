@@ -319,7 +319,7 @@ function enviar_correo(valor) {
         url: "enviar_correo_validacion_of.php",
         type: "POST",
         data: {
-            correo: 'gcesar@incodesoft.com', docentry: valor,
+            correo: 'produccion_sap@exituno.pe', docentry: valor,
         },
         success: function (x) {
             alertify.success('Se envio Correo');
