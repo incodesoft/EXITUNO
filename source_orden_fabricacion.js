@@ -127,7 +127,7 @@ function llena_detalle(producto, id) {
 
                         "<td style='display:none'>" + data[i].docentry + "</td>" +
                         "<td style='display:none'>" + data[i].id_validacion + "</td>" +
-                        "<td style='text-align:center'><button class='btn  btn-danger btn-xs delete'><i class='icon-trash bigger-120'></i>X</button></td>"
+                        "<td style='text-align:center'><button class='btn  btn-danger btn-xs delete rounded-circle'><i class='icon-trash bigger-120'></i>X</button></td>"
                     );
 
                     $("#btn-procesa").prop("disabled", false);
