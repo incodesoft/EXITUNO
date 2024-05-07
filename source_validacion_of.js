@@ -60,6 +60,34 @@ $(document).on('click', '#validar', function () {
 });
 
 
+$(document).on("click", "#tabla_validar tbody tr", function () {
+    // Encuentra el checkbox dentro de la fila actual
+    var checkbox = $(this).find("#validar");
+
+   
+    // Cambia el estado del checkbox al hacer clic en cualquier parte de la fila
+    checkbox.prop("checked", !checkbox.prop("checked"));
+    // Actualiza la apariencia y el botón según el estado del checkbox
+    actualizarFila_mocito(checkbox);
+});
+
+
+function actualizarFila_mocito(checkbox) {
+    var cant = checkbox.closest("tr").find("#validar:checked").length / 2;
+  
+    // Verifica si el checkbox está marcado
+    if (checkbox.is(":checked")) {
+   
+      checkbox.closest("tr").find("td").css("background-color", "LightGreen");
+        llena_detalle(producto);
+        pone_detalle_tabla2(producto);
+    } else {
+
+      checkbox.closest("tr").find("td").css("background-color", "white");
+        llena_detalle_contrario(producto);
+        quita_detalle_tabla2(producto);
+    }
+}
 
 function ultimo_valor_fila() {
     //let tableBody = document.getElementById('tabla_articulos_mod'); 
