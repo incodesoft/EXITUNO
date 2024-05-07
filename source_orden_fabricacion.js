@@ -437,7 +437,7 @@ function busca_articulo_add() {
                                     "<td style='display:none'>" + data[i].DocEntry + "</td>" +
                                     "<td style='display:none'>" + data[i].DocEntry + "</td>" +
 
-                                    "<td style='text-align:center'><button class='btn  btn-danger btn-xs delete'><i class='icon-trash bigger-120'></i>X</button></td>"
+                                    "<td style='text-align:center'><button class='btn  btn-danger btn-xs delete rounded-circle'><i class='fa fa-trash'></i></button></td>"
                                 );
 
                                 $("#btn-procesa").prop("disabled", false);
