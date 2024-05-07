@@ -74,7 +74,7 @@ $(document).on("click", "#tabla_validar tbody tr", function () {
 
 function actualizarFila_mocito(checkbox) {
     var cant = checkbox.closest("tr").find("#validar:checked").length / 2;
-  
+    var producto = checkbox.closest("tr").find("td:eq(2)").text();
     // Verifica si el checkbox está marcado
     if (checkbox.is(":checked")) {
    
