@@ -81,6 +81,8 @@ function actualizarFila_mocito(checkbox) {
       checkbox.closest("tr").find("td").css("background-color", "LightGreen");
         llena_detalle(producto);
         pone_detalle_tabla2(producto);
+        document.getElementById('btn_validar').disabled = false;
+        
     } else {
 
       checkbox.closest("tr").find("td").css("background-color", "white");
