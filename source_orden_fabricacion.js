@@ -2881,6 +2881,18 @@ function mostrar_modal_error(error) {
     }
   });
 }
+function mostrar_modal_error_1(error) {
+  //console.log(error[0]);
 
+  swal({
+    title: "Errores Migracion ",
+    content: {
+      element: "div",
+      attributes: {
+        innerHTML: "<strong>Error:</strong> " + error[0].error_factura
+      },
+    }
+  });
+}
 
 
