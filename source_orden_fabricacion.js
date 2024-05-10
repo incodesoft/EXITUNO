@@ -2247,7 +2247,7 @@ function registrar_OFS() {
         // }
 
         if (nro_producto === '') {
-            nro_producto = '104' + ultimos_cinco_digitos + i
+            nro_producto = '104' + ultimos_cinco_digitos + '000' + i
         }
         
         if (descripcion === '') {
