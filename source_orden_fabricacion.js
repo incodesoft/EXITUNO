@@ -2209,7 +2209,7 @@ function cargar_transformer_cab(docentry) {
 
 
 function registrar_OFS() {
-    i = 1;
+    i = 0001;
 
     $("[name='procesos[]']:checked").each(function (key) {
         var docentry_of = $(this).parents("tr").find('td:eq(1)').text();
@@ -2224,6 +2224,11 @@ function registrar_OFS() {
         var tipo = $(this).parents("tr").find('td:eq(7)').text();
         // var estado = $(this).parents("tr").find('td:eq(7)').text();
         var cod_prodc = $(this).parents("tr").find('td:eq(9)').text();
+        var primeros_ocho_digitos = cod_prodc.substring(0, 8);
+        //console.log(primeros_ocho_digitos);
+        var ultimos_cinco_digitos = primeros_ocho_digitos.slice(-5);
+        //console.log(ultimos_cinco_digitos);
+        
         var estado = "PP";  //Producto Proceso
 
         var nro_producto2 = 'PRODUCTO_PROCESO_' + i; //
@@ -2237,9 +2242,14 @@ function registrar_OFS() {
 
         nueva_cantidad = 0;
 
+        // if (nro_producto === '') {
+        //     nro_producto = cod_prodc + proceso
+        // }
+
         if (nro_producto === '') {
-            nro_producto = cod_prodc + proceso
+            nro_producto = '104' + ultimos_cinco_digitos + i
         }
+        
         if (descripcion === '') {
             descripcion = 'PP' + proceso + '_' + descripcion2
         }
