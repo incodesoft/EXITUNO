@@ -11,25 +11,23 @@ $("#validausr").submit(function (e) {
 
     return false;
   } else {
-    $.ajax({
+  $.ajax({
       beforeSend: function () {},
-      url: "valida_usr.php",
+      url: "valida_login.php",
       type: "POST",
       data: { usuario: usuario, pass: pass },
       success: function (data) {
-        // alert(data);
-        if (data == "") {
-          swal({
-            title: "Oops...",
-            text: "Usuario y/o password incorrecta!",
-            icon: "error",
-          });
+        console.log(data);
+        dat = parseInt(data);
+        if (dat == 0) {
+          swal(
+            "Nombre o contraseña invalidos",
+            "Por favor verifique sus datos " +
+              usuario + " e intente nuevamente",
+            "error"
+          );
         } else {
-          swal({
-            title: "Bienvenido!",
-            text: "ingreso!",
-            icon: "success",
-          });
+          swal("¡Bienvenido!", "Sistema WEB - EXITUNO", "success");
           document.location.href = "inicio.php";
         }
       },
