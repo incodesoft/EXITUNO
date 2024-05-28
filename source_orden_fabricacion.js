@@ -1326,7 +1326,7 @@ function recibo_produccion_cabSQL(iso) {
             iso,
         },
         success: function (x) {
-            //console.log(x);
+            console.log(x);
             var data = x;
             var idcl = data.split("|");
 
