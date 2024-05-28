@@ -1330,8 +1330,14 @@ function recibo_produccion_cabSQL(iso) {
             var data = x;
             var idcl = data.split("|");
 
-            $("#modal_fi").val(idcl[0]);
-            $("#modal_ff").val(idcl[1]);
+            if (data === ''){
+                $("#modal_fi").val("null");
+                $("#modal_ff").val("null");
+            }else{
+                $("#modal_fi").val(idcl[0]);
+                $("#modal_ff").val(idcl[1]);
+            }
+            
 
         },
         error: function (jqXHR, estado, error) { },
