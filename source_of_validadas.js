@@ -88,7 +88,7 @@ function char1() {
       cajas_totales = x[0].EMI_TOTALES
       var total = cajas_totales; // La suma de los valores en los datos
       var value = parseFloat(cajas_abiertas / cajas_totales * 100).toFixed(2);
-      var ctx = $('#myDoughnutChart2')[0].getContext('2d');
+      var ctx = $('#myDoughnutChart2_mod')[0].getContext('2d');
       var myDoughnutChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
@@ -131,7 +131,7 @@ function char1() {
         myDoughnutChart.data.datasets[0].data[0] = parseFloat(cajas_abiertas).toFixed(2);
         myDoughnutChart.data.datasets[0].data[1] = parseFloat(cajas_totales - cajas_abiertas).toFixed(2);
         myDoughnutChart.update();
-        $("#chartValueContainer2").text(cajas_abiertas);
+        $("#chartValueContainer2_mod").text(cajas_abiertas);
       }
       // Generar leyenda manualmente
       function generateLegend(chart) {
@@ -142,7 +142,7 @@ function char1() {
         return text.join('');
       }
 
-      $("#chartLegend").html(generateLegend(myDoughnutChart));
+      $("#chartLegend_mod").html(generateLegend(myDoughnutChart));
       updateChart(cajas_abiertas);
 
     },
