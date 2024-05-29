@@ -1241,6 +1241,7 @@ function recibo_produccion_nroisograf(nro_of_isograf) {
     almacen_nom = idcl[2];
     almacen_cod = idcl[3];
     cantidad_plani = idcl[4];
+    nro_pros = idcl[5];
 
 
     // console.log(docentry);
@@ -1268,7 +1269,7 @@ function recibo_produccion_nroisograf(nro_of_isograf) {
                 url: "consulta_recProd2.php",
                 type: "POST",
                 data: {
-                    iso, almacen_nom, almacen_cod, cantidad_plani, total
+                    iso, almacen_nom, almacen_cod, cantidad_plani, total, nro_pros
                 },
                 success: function (x) {
                     $("#tabla_recibo").html(x);
