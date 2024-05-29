@@ -84,9 +84,9 @@ function char2() {
     type: "POST",
     data: null,
     success: function (x) {
-      cajas_cerraras = x[0].CAJAS_CERRADAS
-      cajas_abiertas = x[0].CAJAS_ABIERTAS
-      cajas_totales = x[0].CAJAS_TOTALES
+      cajas_cerraras = x[0].OF_CERRADAS
+      cajas_abiertas = x[0].OF_ABIERTAS
+      cajas_totales = x[0].OF_TOTALES
       var total = cajas_totales; // La suma de los valores en los datos
       var value = parseFloat(cajas_abiertas / cajas_totales * 100).toFixed(2);
       var ctx = $('#myDoughnutChart2')[0].getContext('2d');
