@@ -39,8 +39,9 @@ function char2() {
     type: "POST",
     data: null,
     success: function (x) {
-      cajas_cerraras = x[0].OF_CERRADAS
-      cajas_abiertas = x[0].OF_ABIERTAS
+      cajas_cerraras = x[0].PLANIFICADAS
+      cajas_abiertas = x[0].PROCESO
+      cajas_cerra = x[0].CERRADA
       cajas_totales = x[0].OF_TOTALES
       var total = cajas_totales; // La suma de los valores en los datos
       var value = parseFloat(cajas_abiertas / cajas_totales * 100).toFixed(2);
@@ -48,7 +49,7 @@ function char2() {
       var myDoughnutChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-          labels: ['Abierta', 'Cerrada'],
+          labels: ['Planificada', 'Proceso'],
           datasets: [{
             data: [value, 100 - value], // El primer segmento tendrá el valor actual
             backgroundColor: [
@@ -67,10 +68,10 @@ function char2() {
             tooltip: {
               callbacks: {
                 label: function (tooltipItem) {
-                  if (tooltipItem.label === 'Abierta') {
-                    return 'Abierta: ' + tooltipItem.raw;
-                  } else if (tooltipItem.label === 'Cerrada') {
-                    return 'Cerrada: ' + tooltipItem.raw;
+                  if (tooltipItem.label === 'Planificada') {
+                    return 'Planificada: ' + tooltipItem.raw;
+                  } else if (tooltipItem.label === 'Proceso') {
+                    return 'Proceso: ' + tooltipItem.raw;
                   }
                   return tooltipItem.label + ': ' + tooltipItem.raw;
                 }
