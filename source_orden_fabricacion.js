@@ -1130,7 +1130,8 @@ function cerrar_of() {
                     $("#modal_seleccionar_of").modal("hide");
                     $("#modal_resumen_detalle").modal("hide");
                     lista_of_reg();
-                    migrar_sap(sapdocentry, 5)
+                    migrar_sap(sapdocentry, 5);
+                    char2();
                 },
 
                 error: function (jqXHR, estado, error) {
