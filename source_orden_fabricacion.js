@@ -90,7 +90,7 @@ function char2() {
       function updateChart(value) {
         myDoughnutChart.data.datasets[0].data[0] = parseFloat(cajas_abiertas).toFixed(2);
         myDoughnutChart.data.datasets[0].data[1] = parseFloat(cajas_totales - cajas_abiertas).toFixed(2);
-        myDoughnutChart.data.datasets[0].data[1] = parseFloat(cajas_cerra).toFixed(2);
+        myDoughnutChart.data.datasets[0].data[2] = parseFloat(cajas_cerra).toFixed(2);
         myDoughnutChart.update();
         $("#chartValueContainer2").text(cajas_abiertas);
       }
