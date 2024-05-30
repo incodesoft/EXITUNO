@@ -49,12 +49,13 @@ function char2() {
       var myDoughnutChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-          labels: ['Planificada', 'Proceso'],
+          labels: ['Planificada', 'Proceso', 'Cerrada'],
           datasets: [{
             data: [value, 100 - value], // El primer segmento tendrá el valor actual
             backgroundColor: [
               'rgba(255, 99, 132)',
-              'rgba(54, 162, 235)'
+              'rgba(54, 162, 235)',
+              'rgba(235, 26, 26)'
             ]
           }]
         },
@@ -72,6 +73,8 @@ function char2() {
                     return 'Planificada: ' + tooltipItem.raw;
                   } else if (tooltipItem.label === 'Proceso') {
                     return 'Proceso: ' + tooltipItem.raw;
+                  } else if (tooltipItem.label === 'Cerrada') {
+                    return 'Cerrada: ' + tooltipItem.raw;
                   }
                   return tooltipItem.label + ': ' + tooltipItem.raw;
                 }
