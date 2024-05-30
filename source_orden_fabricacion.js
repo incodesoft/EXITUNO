@@ -53,8 +53,8 @@ function char2() {
           datasets: [{
             data: [value, 100 - value], // El primer segmento tendrá el valor actual
             backgroundColor: [
-              'rgba(255, 99, 132)',
-              'rgba(54, 162, 235)',
+              'rgba(243, 171, 47)',
+              'rgba(60, 177, 45)',
               'rgba(235, 26, 26)'
             ]
           }]
