@@ -102,7 +102,7 @@ function registrar_datos(){
       },
       url: 'registra_datos_articulos.php',
       type: 'POST',
-      data: {numero_articulo:numero_articulo, descripcion_articulo:descripcion_articulo, clase_articulo:clase_articulo, grupo_articulo:grupo_articulo,
+      data: {numero_articulo:numero_articulo, descripcion_articulo:descripcion_articulo, clase_articulo:clase_articulo, grupo_articulo:grupo_articulo,grupo_medida:grupo_medida,
             num_catalogo:num_catalogo, codigo_um_compras:codigo_um_compras, igv_compras:igv_compras, igv_ventas:igv_ventas, cod_um_recuento:cod_um_recuento,  nom_um_recuento:nom_um_recuento},
       success: function (data) {
       $("#num_articulo").val("");
