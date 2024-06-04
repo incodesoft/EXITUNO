@@ -152,6 +152,26 @@ $(document).on("change", "#grupo_articulo select", function () {
       },
       error: function (jqXHR, estado, error) {
       }
-    });
-  
+    });  
 })
+$(document).on("change", "#familia_articulo select", function () {
+
+  id = $("#num_articulo").val();
+  id2= id + this.value
+  $("#num_articulo").val(id2);
+
+  /* $.ajax({
+      beforeSend: function () {
+        $("#igv_ventas").html("Cargando...");
+      },
+      url: 'lista_familia_grupo_oitm.php',
+      type: 'POST',
+      data: {docentry:id},
+      success: function (x) {
+        $("#familia_articulo").html(x);
+        $(".select2").select2();
+      },
+      error: function (jqXHR, estado, error) {
+      }
+    });  
+}) */
