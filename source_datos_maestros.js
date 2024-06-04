@@ -24,6 +24,21 @@ fechaf = $("#fechaf").val();
 }
 
 
+function migrar_sap(docentry, tipo_dc) {
+    $.ajax({
+        beforeSend: function () { },
+        url: "insertar_cola_service_of.php",
+        type: "POST",
+        data: { docentry: docentry, tipo_doc: tipo_dc, objtype: '202' },
+        success: function (x) {
+        },
+        error: function (jqXHR, estado, error) {
+            $("#errores").html("Error... " + estado + "  " + error);
+        },
+    });
+}
+
+
 function lista_grupoA() {
   $(document).ready(function () {
 
