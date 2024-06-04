@@ -112,28 +112,51 @@ function registrar_datos(){
   }
   sub_familia = $("#subfamilia_articulo select").val();
   familia = $("#familia_articulo select").val();
-  $.ajax({
-      beforeSend: function () {
-      },
-      url: 'registra_datos_articulos.php',
-      type: 'POST',
-      data: {numero_articulo:numero_articulo, descripcion_articulo:descripcion_articulo, clase_articulo:clase_articulo, grupo_articulo:grupo_articulo,grupo_medida:grupo_medida,
-            num_catalogo:num_catalogo, codigo_um_compras:codigo_um_compras, igv_compras:igv_compras, igv_ventas:igv_ventas, cod_um_recuento:cod_um_recuento,  nom_um_recuento:nom_um_recuento,
-            check_inventario:check_inventario,check_compra:check_compra,check_venta:check_venta,sub_familia:sub_familia,familia:familia},
-      success: function (data) {
-      $("#num_articulo").val("");
-      $("#descripcion_articulo").val("");
-      $("#num_catalogo").val("");
-      $("#codigo_um_compras").val("");
-      $("#cod_um_recuento").val("");
-      $("#nom_um_recuento").val("");
+  bandera = true;
 
-      },
-      error: function (jqXHR, estado, error) {
-       $("#errores").html('Error... ' + estado + '  ' + error);
-      }
-  });
-
+  if (descripcion_articulo === ''){
+    bandera = false;
+    alertify.error("Ingresar Descripcion");
+  }
+  if (num_catalogo === ''){
+    bandera = false;
+    alertify.error("Ingresar # de Catalogo");
+  }
+  if (codigo_um_compras === ''){
+    bandera = false;
+    alertify.error("Ingresar codigo UM de Compras");
+  }
+  if (igv_compras === ''){
+    bandera = false;
+    alertify.error("Seleccione IGV de Compras");
+  }
+  if (igv_ventas === ''){
+    bandera = false;
+    alertify.error("Seleccione IGV de Ventas");
+  }
+  if (bandera === true){
+    $.ajax({
+        beforeSend: function () {
+        },
+        url: 'registra_datos_articulos.php',
+        type: 'POST',
+        data: {numero_articulo:numero_articulo, descripcion_articulo:descripcion_articulo, clase_articulo:clase_articulo, grupo_articulo:grupo_articulo,grupo_medida:grupo_medida,
+              num_catalogo:num_catalogo, codigo_um_compras:codigo_um_compras, igv_compras:igv_compras, igv_ventas:igv_ventas, cod_um_recuento:cod_um_recuento,  nom_um_recuento:nom_um_recuento,
+              check_inventario:check_inventario,check_compra:check_compra,check_venta:check_venta,sub_familia:sub_familia,familia:familia},
+        success: function (data) {
+        $("#num_articulo").val("");
+        $("#descripcion_articulo").val("");
+        $("#num_catalogo").val("");
+        $("#codigo_um_compras").val("");
+        $("#cod_um_recuento").val("");
+        $("#nom_um_recuento").val("");
+  
+        },
+        error: function (jqXHR, estado, error) {
+         $("#errores").html('Error... ' + estado + '  ' + error);
+        }
+    });
+  }
   
 }
 
