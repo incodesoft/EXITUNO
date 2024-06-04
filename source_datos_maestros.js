@@ -190,7 +190,17 @@ $(document).on("change", "#subfamilia_articulo select", function () {
       data: {docentry:id2},
       success: function (x) {
         id = $("#num_articulo").val();
-         id2= id + x
+        let numericValue = parseInt(value, 10);
+        let newValue = (numericValue + 1).toString();
+        
+        // Añadir ceros a la izquierda si es necesario (4 dígitos)
+        while (newValue.length < value.length) {
+            newValue = '0' + newValue;
+        }
+        let resultText = `${newValue}`;
+        console.log(resultText)
+         id2= id + resultText
+        
           $("#num_articulo").val(id2);
       },
       error: function (jqXHR, estado, error) {
