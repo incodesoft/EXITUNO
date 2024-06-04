@@ -173,16 +173,17 @@ function registrar_datos(){
               alertify.error("No inserto");
           } else {
             migrar_sap(global, 6);
+            $("#num_articulo").val("");
+            $("#descripcion_articulo").val("");
+            $("#num_catalogo").val("");
+            $("#codigo_um_compras").val("");
+            $("#cod_um_recuento").val("");
+            $("#nom_um_recuento").val("");
+            swal("Se registro correctamente ", {
+                icon: "success",
+            });
           }
-        $("#num_articulo").val("");
-        $("#descripcion_articulo").val("");
-        $("#num_catalogo").val("");
-        $("#codigo_um_compras").val("");
-        $("#cod_um_recuento").val("");
-        $("#nom_um_recuento").val("");
-          swal("Se registro correctamente ", {
-            icon: "success",
-          });
+        
   
         },
         error: function (jqXHR, estado, error) {
