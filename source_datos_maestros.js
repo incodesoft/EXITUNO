@@ -287,8 +287,8 @@ $(document).on("change", "#subfamilia_articulo select", function () {
 $(document).on("change", "#grupo_medida select", function () {
   id = this.value;
 
-  $('#cod_um_recuento').val();
-  $('#cod_um_recuento').val();
+  $('#codigo_um_compras').val(id);
+  $('#cod_um_recuento').val(id);
 })
 
 function migrar_sap(docentry, tipo_dc) {
