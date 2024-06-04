@@ -191,6 +191,7 @@ $(document).on("change", "#subfamilia_articulo select", function () {
       success: function (x) {
         id = $("#num_articulo").val();
          id2= id + x
+          $("#num_articulo").val(id2);
       },
       error: function (jqXHR, estado, error) {
       }
