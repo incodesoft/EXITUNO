@@ -185,7 +185,7 @@ $(document).on("change", "#subfamilia_articulo select", function () {
       beforeSend: function () {
        // $("#subfamilia_articulo").html("Cargando...");
       },
-      url: 'lista_subfamilia_grupo_oitm.php',
+      url: 'lista_codigo_sap_oitm.php',
       type: 'POST',
       data: {docentry:id2},
       success: function (x) {
