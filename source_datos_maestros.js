@@ -141,7 +141,7 @@ $(document).on("change", "#grupo_articulo select", function () {
 
   $.ajax({
       beforeSend: function () {
-        $("#igv_ventas").html("Cargando...");
+        $("#familia_articulo").html("Cargando...");
       },
       url: 'lista_familia_grupo_oitm.php',
       type: 'POST',
@@ -162,7 +162,7 @@ $(document).on("change", "#familia_articulo select", function () {
 
    $.ajax({
       beforeSend: function () {
-        $("#igv_ventas").html("Cargando...");
+        $("#subfamilia_articulo").html("Cargando...");
       },
       url: 'lista_subfamilia_grupo_oitm.php',
       type: 'POST',
