@@ -181,19 +181,19 @@ $(document).on("change", "#subfamilia_articulo select", function () {
   id2= id + this.value
   $("#num_articulo").val(id2);
 
-   /* $.ajax({
+    $.ajax({
       beforeSend: function () {
-        $("#subfamilia_articulo").html("Cargando...");
+       // $("#subfamilia_articulo").html("Cargando...");
       },
       url: 'lista_subfamilia_grupo_oitm.php',
       type: 'POST',
-      data: {docentry:this.value},
+      data: {docentry:id2},
       success: function (x) {
-        $("#subfamilia_articulo").html(x);
-        $(".select2").select2();
+        id = $("#num_articulo").val();
+         id2= id + x
       },
       error: function (jqXHR, estado, error) {
       }
-    });  */
+    });  
 }) 
 
