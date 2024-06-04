@@ -150,6 +150,9 @@ function registrar_datos(){
         $("#codigo_um_compras").val("");
         $("#cod_um_recuento").val("");
         $("#nom_um_recuento").val("");
+          swal("Se registro correctamente ", {
+            icon: "success",
+          });
   
         },
         error: function (jqXHR, estado, error) {
