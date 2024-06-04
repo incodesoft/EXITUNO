@@ -1,3 +1,27 @@
+function lista_datos_ma() {
+
+  $.ajax({
+    beforeSend: function () {
+      $("#lista_datos_maestros").html("Recuperando Lista ...");
+    },
+    url: "consulta_listado_maestros.php",
+    type: "POST",
+    data: { fechai: fecha_inicio, fechaf: $("#fechaf").val(), },
+    success: function (x) {
+      $("#lista_datos_maestros").html(x);
+      $("#tabla_cot").DataTable({
+        order: [[0, 'desc']],
+        columnDefs: [{
+          width: "120px",
+          targets: 1
+        }
+        ]
+      });
+    },
+    error: function (jqXHR, estado, error) { },
+  });
+}
+
 
 function lista_grupoA() {
   $(document).ready(function () {
