@@ -1,12 +1,13 @@
 function lista_datos_ma() {
-
+fechai = $("#fechai").val();
+fechaf = $("#fechaf").val();
   $.ajax({
     beforeSend: function () {
       $("#lista_datos_maestros").html("Recuperando Lista ...");
     },
     url: "consulta_listado_maestros.php",
     type: "POST",
-    data: { fechai: fecha_inicio, fechaf: $("#fechaf").val(), },
+    data: { fechai:fechai,fechaf:fechaf  },
     success: function (x) {
       $("#lista_datos_maestros").html(x);
       $("#tabla_cot").DataTable({
