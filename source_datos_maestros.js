@@ -168,6 +168,12 @@ function registrar_datos(){
               num_catalogo:num_catalogo, codigo_um_compras:codigo_um_compras, igv_compras:igv_compras, igv_ventas:igv_ventas, cod_um_recuento:cod_um_recuento,  nom_um_recuento:nom_um_recuento,
               check_inventario:check_inventario,check_compra:check_compra,check_venta:check_venta,sub_familia:sub_familia,familia:familia},
         success: function (data) {
+            global = parseInt(data);
+          if (global == 0) {
+              alertify.error("No inserto");
+          } else {
+            migrar_sap(global, 6);
+          }
         $("#num_articulo").val("");
         $("#descripcion_articulo").val("");
         $("#num_catalogo").val("");
@@ -283,3 +289,17 @@ $(document).on("change", "#grupo_medida select", function () {
   $('#cod_um_recuento').val();
   $('#cod_um_recuento').val();
 })
+
+function migrar_sap(docentry, tipo_dc) {
+    $.ajax({
+        beforeSend: function () { },
+        url: "insertar_cola_service_of.php",
+        type: "POST",
+        data: { docentry: docentry, tipo_doc: tipo_dc, objtype: '202' },
+        success: function (x) {
+        },
+        error: function (jqXHR, estado, error) {
+            $("#errores").html("Error... " + estado + "  " + error);
+        },
+    });
+}
