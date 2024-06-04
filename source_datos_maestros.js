@@ -173,5 +173,5 @@ $(document).on("change", "#familia_articulo select", function () {
       },
       error: function (jqXHR, estado, error) {
       }
-    });  
-}) */
+    }); */ 
+}) 
