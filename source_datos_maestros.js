@@ -190,6 +190,7 @@ $(document).on("change", "#subfamilia_articulo select", function () {
       data: {docentry:id2},
       success: function (x) {
         id = $("#num_articulo").val();
+        value= x;
         let numericValue = parseInt(value, 10);
         let newValue = (numericValue + 1).toString();
         
