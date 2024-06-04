@@ -160,18 +160,18 @@ $(document).on("change", "#familia_articulo select", function () {
   id2= id + this.value
   $("#num_articulo").val(id2);
 
-  /* $.ajax({
+   $.ajax({
       beforeSend: function () {
         $("#igv_ventas").html("Cargando...");
       },
-      url: 'lista_familia_grupo_oitm.php',
+      url: 'lista_subfamilia_grupo_oitm.php',
       type: 'POST',
-      data: {docentry:id},
+      data: {docentry:this.value},
       success: function (x) {
-        $("#familia_articulo").html(x);
+        $("#subfamilia_articulo").html(x);
         $(".select2").select2();
       },
       error: function (jqXHR, estado, error) {
       }
-    }); */ 
+    }); 
 }) 
