@@ -175,3 +175,25 @@ $(document).on("change", "#familia_articulo select", function () {
       }
     }); 
 }) 
+$(document).on("change", "#subfamilia_articulo select", function () {
+
+  id = $("#num_articulo").val();
+  id2= id + this.value
+  $("#num_articulo").val(id2);
+
+   /* $.ajax({
+      beforeSend: function () {
+        $("#subfamilia_articulo").html("Cargando...");
+      },
+      url: 'lista_subfamilia_grupo_oitm.php',
+      type: 'POST',
+      data: {docentry:this.value},
+      success: function (x) {
+        $("#subfamilia_articulo").html(x);
+        $(".select2").select2();
+      },
+      error: function (jqXHR, estado, error) {
+      }
+    });  */
+}) 
+
