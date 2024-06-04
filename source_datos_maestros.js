@@ -183,7 +183,7 @@ function registrar_datos(){
                 icon: "success",
             });
           }
-        
+          lista_datos_ma();
   
         },
         error: function (jqXHR, estado, error) {
