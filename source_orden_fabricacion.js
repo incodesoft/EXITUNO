@@ -1891,7 +1891,7 @@ function registrar_datos() {
                             console.log(almacen);
                             var cant_almacen = $(this).parents("tr").find('input[id="cant_stock"]').val();
                             var ingresarcantidad2 = parseFloat(ingresarcantidad);
-                            var nro_isograph = $(this).parents("tr").find('td:eq(12)').text();
+                            var nro_isograph = $(this).parents("tr").find('td:eq(13)').text();
 
                             $.ajax({
                                 beforeSend: function () { },
