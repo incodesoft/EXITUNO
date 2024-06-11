@@ -1797,6 +1797,11 @@ function registrar_datos() {
     fechai_modal = $("#fechai_modal").val();
     fechaf_modal = $("#fechaf_modal").val();
 
+    maquinaria_modal = $("#maquinaria_modal").val();
+    turno_modal = $("#turno_modal").val();
+    operario_modal = $("#operario_modal").val();
+    
+
     bandera = true;
     bandera2 = true;
 
@@ -1811,6 +1816,7 @@ function registrar_datos() {
             var tipo = $(this).parents("tr").find('td:eq(6)').text();
             var cant_b = $(this).parents("tr").find('td:eq(7)').text();
             var cant_r = $(this).parents("tr").find('td:eq(8)').text();
+            var cant_mala = $(this).parents("tr").find('td:eq(9)').text();
             var ingresarcantidad = $(this).parents("tr").find('input[id="ingresarCant"]').val();
             var almacen = $(this).parents("tr").find("#almacen_entrega option:selected").val();
             var cant_almacen = $(this).parents("tr").find('input[id="cant_stock"]').val();
@@ -1820,12 +1826,12 @@ function registrar_datos() {
             if (0 > ingresarcantidad2) {
                 bandera2 = false
                 alertify.error('Cantidad no Validad');
-                $(this).parents("tr").find('td:eq(9)').css("background-color", "#F67280");
+                $(this).parents("tr").find('td:eq(10)').css("background-color", "#F67280");
             }
             if (ingresarcantidad === "") {
                 bandera2 = false
                 alertify.error('Falta llenar la cantidad');
-                $(this).parents("tr").find('td:eq(9)').css("background-color", "#F67280");
+                $(this).parents("tr").find('td:eq(10)').css("background-color", "#F67280");
             }
 
             if (ingresarcantidad2 > cant_r) {
@@ -1847,7 +1853,9 @@ function registrar_datos() {
             $.ajax({
                 url: "inserta_datos_entrega_cab.php",
                 type: "POST",
-                data: { tipo_mod: tipo_mod, estado_mod: estado_mod, producto_mod: producto_mod, um_mod: um_mod, des_mod: des_mod, cant_plan_mod: cant_plan_mod, almacen_modal: almacen_modal, docentry_mod: docentry_mod, comentarios: comentarios, fechai_modal: fechai_modal, fechaf_modal: fechaf_modal },
+                data: { tipo_mod: tipo_mod, estado_mod: estado_mod, producto_mod: producto_mod, um_mod: um_mod, des_mod:
+                    des_mod, cant_plan_mod: cant_plan_mod, almacen_modal: almacen_modal, docentry_mod: docentry_mod, comentarios: 
+                    comentarios, fechai_modal: fechai_modal, fechaf_modal: fechaf_modal, maquinaria_modal:maquinaria_modal, turno_modal:turno_modal, operario_modal:operario_modal },
                 success: function (x) {
                     Swal.fire({
                         icon: 'success',
@@ -1877,6 +1885,7 @@ function registrar_datos() {
                             var tipo = $(this).parents("tr").find('td:eq(6)').text();
                             var cant_b = $(this).parents("tr").find('td:eq(7)').text();
                             var cant_r = $(this).parents("tr").find('td:eq(8)').text();
+                            var cant_mala = $(this).parents("tr").find('td:eq(9)').text();
                             var ingresarcantidad = $(this).parents("tr").find('input[id="ingresarCant"]').val();
                             var almacen = $(this).parents("tr").find("#almacen_entrega option:selected").val();
                             console.log(almacen);
@@ -1905,6 +1914,8 @@ function registrar_datos() {
                                     cant_b +
                                     "&cant_r=" +
                                     cant_r +
+                                    "&cant_mala=" +
+                                    cant_mala +
                                     "&ingresarcantidad=" +
                                     ingresarcantidad2 +
                                     "&almacen=" +
@@ -2345,7 +2356,9 @@ function registrar_OFS() {
             beforeSend: function () { },
             url: 'procesa_of_cab.php',
             type: 'POST',
-            data: { tipo: tipo, estado: estado, nro_producto: nro_producto, unidad_medida: unidad_medida, descripcion: descripcion, cant_planificada: cant_planificada, almacen: almacen, fecha_op: fecha_op, fecha_inicio: fecha_inicio, fecha_fin: fecha_fin, nro_of_isograf: nro_of_isograf, cant_merma: cant_merma, nueva_cantidad: nueva_cantidad },
+            data: { tipo: tipo, estado: estado, nro_producto: nro_producto, unidad_medida: unidad_medida, descripcion: descripcion,
+                   cant_planificada: cant_planificada, almacen: almacen, fecha_op: fecha_op, fecha_inicio: fecha_inicio, fecha_fin: fecha_fin,
+                   nro_of_isograf: nro_of_isograf, cant_merma: cant_merma, nueva_cantidad: nueva_cantidad },
             success: function (data) {
                 liberar(docentry, 0);
 
