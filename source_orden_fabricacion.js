@@ -1870,6 +1870,9 @@ function registrar_datos() {
                     lista_of_reg();
                     lista_of_entrega();
                     $("#comentarios").val('');
+                    $("#maquinaria_modal").val('');
+                    $("#turno_modal").val('');
+                    $("#operario_modal").val('');
                     global = parseInt(x);
                     //console.log(global);
                     //aqui comienza el deta
