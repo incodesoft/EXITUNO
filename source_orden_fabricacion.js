@@ -856,7 +856,7 @@ function buscar_data_stock(value, data) {
         success: function (x) {
             x2 = parseFloat(x)
             if (isNaN(x2)) x2 = 0
-            $($("#tabla_detpr").find("tbody > tr")[fila]).children("td")[11].children[0].value = x2
+            $($("#tabla_detpr").find("tbody > tr")[fila]).children("td")[12].children[0].value = x2
         },
         error: function (jqXHR, estado, error) { },
     });
@@ -879,7 +879,7 @@ function buscar_data_stock2(value, data) {
         success: function (x) {
             x2 = parseFloat(x)
             if (isNaN(x2)) x2 = 0
-            $($("#tabla_detpr_otros").find("tbody > tr")[fila]).children("td")[11].children[0].value = x2
+            $($("#tabla_detpr_otros").find("tbody > tr")[fila]).children("td")[12].children[0].value = x2
         },
         error: function (jqXHR, estado, error) { },
     });
