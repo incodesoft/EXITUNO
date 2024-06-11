@@ -1816,7 +1816,8 @@ function registrar_datos() {
             var tipo = $(this).parents("tr").find('td:eq(6)').text();
             var cant_b = $(this).parents("tr").find('td:eq(7)').text();
             var cant_r = $(this).parents("tr").find('td:eq(8)').text();
-            var cant_mala = $(this).parents("tr").find('td:eq(9)').text();
+            var cant_mala =  $(this).parents("tr").find('input[id="ingresarCant_mala"]').val();
+            var cant_mala2 = parseFloat(cant_mala);
             var ingresarcantidad = $(this).parents("tr").find('input[id="ingresarCant"]').val();
             var almacen = $(this).parents("tr").find("#almacen_entrega option:selected").val();
             var cant_almacen = $(this).parents("tr").find('input[id="cant_stock"]').val();
@@ -1888,7 +1889,8 @@ function registrar_datos() {
                             var tipo = $(this).parents("tr").find('td:eq(6)').text();
                             var cant_b = $(this).parents("tr").find('td:eq(7)').text();
                             var cant_r = $(this).parents("tr").find('td:eq(8)').text();
-                            var cant_mala = $(this).parents("tr").find('td:eq(9)').text();
+                            var cant_mala =  $(this).parents("tr").find('input[id="ingresarCant_mala"]').val();
+                            var cant_mala2 = parseFloat(cant_mala);
                             var ingresarcantidad = $(this).parents("tr").find('input[id="ingresarCant"]').val();
                             var almacen = $(this).parents("tr").find("#almacen_entrega option:selected").val();
                             console.log(almacen);
@@ -1918,7 +1920,7 @@ function registrar_datos() {
                                     "&cant_r=" +
                                     cant_r +
                                     "&cant_mala=" +
-                                    cant_mala +
+                                    cant_mala2 +
                                     "&ingresarcantidad=" +
                                     ingresarcantidad2 +
                                     "&almacen=" +
