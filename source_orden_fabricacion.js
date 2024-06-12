@@ -604,6 +604,27 @@ function cargar_automatico_stock() {
 
 }
 
+function lista_turno() {
+
+    $.ajax({
+        beforeSend: function () {
+            //$("#list_turno").html("Recuperando Lista ...");
+        },
+        url: 'consulta_sql_datos_turnos.php',
+        type: 'POST',
+        data: null,
+        success: function (x) {
+            //console.log(x);
+            
+            // $("#list_turno").html(cod);
+
+        },
+        error: function (jqXHR, estado, error) {
+        }
+    });
+
+}
+
 
 
 function listar_almacen() {
@@ -955,6 +976,7 @@ function lista_recibo_prod() {
 function detalle_of(docentry) {
     $("#modal_procesar").modal("toggle");
     consulta_datos_of_cab(docentry);
+    lista_turno();
 }
 
 
