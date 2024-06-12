@@ -616,7 +616,8 @@ function lista_turno() {
         success: function (x) {
             //console.log(x);
             
-            // $("#list_turno").html(cod);
+            $("#list_turno").html(x);
+             $(".select2").select2();
 
         },
         error: function (jqXHR, estado, error) {
