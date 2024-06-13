@@ -55,6 +55,7 @@ $(document).on('click', '#validar', function () {
 
         llena_detalle_contrario(producto);
         quita_detalle_tabla2(producto);
+        llena_elementos_contrario(producto);
 
     }
 
@@ -90,6 +91,7 @@ function actualizarFila_mocito(checkbox) {
       checkbox.closest("tr").find("td").css("background-color", "white");
         llena_detalle_contrario(producto);
         quita_detalle_tabla2(producto);
+        llena_elementos_contrario(producto);
     }
 }
 
@@ -202,6 +204,50 @@ function llena_elementos(producto){
         error: function (jqXHR, estado, error) { },
     });
 }
+
+
+function llena_elementos_contrario(producto){
+     $.ajax({
+        beforeSend: function () {
+        
+        },
+        url: "lista_elementos.php",
+        dataType: 'json',
+        type: 'POST',
+        data: {  producto: producto },
+        success: function (data) {
+            if (data == 0) {
+                var n = noty({
+                    text: "No existe el articulo...!",
+                    theme: 'relax',
+                    layout: 'center',
+                    type: 'error',
+                    timeout: 2000,
+                });
+            } else {
+                for (let i = 0; i < data.length; i++) {
+                      var codigo = data[i].iso;
+                   
+                    $('#tabla_elementos tbody tr').each(function () {
+                        var codigoTabla = $(this).find('td:eq(1)').text().trim();
+                        if (codigoTabla === data[i].iso) {
+
+                            var codigoTabla2 = $(this).find('td:eq(1)').text().trim();
+                        
+                            var cantidadActual = parseInt($(this).find('td:eq(4)').text().trim());
+                            var nuevaCantidad = cantidadActual + parseInt(data[i].cantidad);
+                            $(this).find('td:eq(4)').text(nuevaCantidad);
+                            return false; // Terminar el bucle
+                        }
+                    });
+                }
+            }
+        },
+        error: function (jqXHR, estado, error) { },
+    });
+}
+
+
 
 
 function llena_detalle(producto) {
