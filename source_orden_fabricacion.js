@@ -785,6 +785,14 @@ function calcular_total_item(input, linea) {
     $($("#tabla_articulos").find("tbody > tr")[fila]).children("td")[6].children[0].value = monto
 }
 
+function calcular_total_item2da_explo(input, linea) {
+    var fila = obtenerFila3(input);
+    cantidad_base = parseFloat($($("#table_explo2").find("tbody > tr")[fila]).children("td")[5].children[0].value);
+    cantidad_planificada = parseFloat($("#cant_planificada").val());
+    var monto = parseFloat((cantidad_base * cantidad_planificada)).toFixed(4);
+    $($("#tabla_articulos").find("tbody > tr")[fila]).children("td")[6].children[0].value = monto
+}
+
 
 
 function carga_datos() {
@@ -2337,6 +2345,37 @@ function reg_transformar() {
     });
 
 }
+
+
+function reg_2da_explosion() {
+    $("#modal_ver_datos_explo2").modal("toggle");
+
+    var docentry = $('#table_explo2 > tbody > tr').find('td').eq(1).html();
+    var proceso = $('#table_explo2 > tbody > tr').find('td').eq(11).html();
+    var isograf = $('#table_explo2 > tbody > tr').find('td').eq(12).html();
+
+    //console.log(docentry);
+
+    $.ajax({
+        url: "lista_mate.php",
+
+        type: "POST",
+        data: {
+            docentry, proceso, isograf
+        },
+        success: function (x) {
+            $("#tabla_ver2daexplo").html(x);
+            $("#tablaofs").DataTable({
+                order: [[1, 'asc']]
+            });
+
+            //cargar_transformer_cab(docentry);
+        },
+        error: function (jqXHR, estado, error) { },
+    });
+
+}
+
 
 function unique(arr) {
     let result = [];
