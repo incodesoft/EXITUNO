@@ -46,7 +46,7 @@ $(document).on('click', '#validar', function () {
         document.getElementById('btn_validar').disabled = false;
         llena_detalle(producto);
         pone_detalle_tabla2(producto);
-        llena_elementos(producto)
+        llena_elementos(producto);
 
 
     } else {
@@ -81,6 +81,7 @@ function actualizarFila_mocito(checkbox) {
    
       checkbox.closest("tr").find("td").css("background-color", "LightGreen");
         llena_detalle(producto);
+        llena_elementos(producto);
         pone_detalle_tabla2(producto);
         document.getElementById('btn_validar').disabled = false;
         
