@@ -152,7 +152,8 @@ function llena_elementos(producto){
         
         },
         url: "lista_elementos.php",
-        type: "POST",
+        dataType: 'json',
+        type: 'POST',
         data: {  producto: producto },
         success: function (data) {
             if (data == 0) {
