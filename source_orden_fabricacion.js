@@ -191,8 +191,7 @@ function llena_detalle_elementos(producto, id) {
 
 
                     $("#tabla_articulos > tbody").append("<tr><td   class='center'>" + num + "</td>" +
-                        "<td style='text-align:center'> <select class='form-control' onchange='' style='width: 100%;font-size:12px;' tabindex='-1' aria-hidden='true'  id='proceso'>
-                        <option value='ELEMENTO' SELECTED>ELEMENTO</option></select></td>" +
+                        "<td style='text-align:center'> <select class='form-control' onchange='' style='width: 100%;font-size:12px;' tabindex='-1' aria-hidden='true'  id='proceso'><option value='ELEMENTO' SELECTED>ELEMENTO</option></select></td>" +
                         "<td class='center'>" + data[i].codmatS + "</td>" +
                         "<td style='center'>" + data[i].DesLarga + "</td>" +
                         "<td style='center'>" + data[i].Tipos + "</td>" +
