@@ -235,8 +235,11 @@ function llena_elementos_contrario(producto){
                             var codigoTabla2 = $(this).find('td:eq(1)').text().trim();
                         
                             var cantidadActual = parseInt($(this).find('td:eq(4)').text().trim());
-                            var nuevaCantidad = cantidadActual + parseInt(data[i].cantidad);
+                            var nuevaCantidad = cantidadActual - parseInt(data[i].cantidad);
                             $(this).find('td:eq(4)').text(nuevaCantidad);
+                            if (nuevaCantidad === 0) {
+                                $(this).remove(); // Eliminar la fila si la cantidad es 0
+                            }
                             return false; // Terminar el bucle
                         }
                     });
