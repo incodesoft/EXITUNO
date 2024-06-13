@@ -2264,6 +2264,28 @@ function transformar_of(docentry) {
 }
 
 
+function listado_materiales_transf(docentry) {
+    $("#modal_2da_explosion").modal("toggle");
+
+    $.ajax({
+        url: "lista_mate_explosion.php",
+
+        type: "POST",
+        data: {
+            docentry,
+        },
+        success: function (x) {
+            $("#tabla_2da_explosion").html(x);
+            $("#table_explo2").DataTable({
+                order: [[1, 'asc']]
+            });
+        },
+        error: function (jqXHR, estado, error) { },
+    });
+
+}
+
+
 function transformar_of2(docentry) {
     $("#modal_transformarOP2").modal("toggle");
 
