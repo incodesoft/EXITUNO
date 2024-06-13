@@ -166,18 +166,14 @@ function llena_elementos(producto){
                 });
             } else {
                 for (let i = 0; i < data.length; i++) {
-                      var codigo = data[i].cod_elemento;
+                      var codigo = data[i].iso;
                    
                     $('#tabla_elementos tbody tr').each(function () {
-                        var codigoTabla = $(this).find('td:eq(2)').text().trim();
-                        if (codigoTabla === data[i].cod_elemento) {
+                        var codigoTabla = $(this).find('td:eq(1)').text().trim();
+                        if (codigoTabla === data[i].iso) {
 
-                            var codigoTabla2 = $(this).find('td:eq(2)').text().trim();
-                            if (codigoTabla2 === '0') {
-                                $(this).find("td").css("background-color", "red");
-                            }
-
-
+                            var codigoTabla2 = $(this).find('td:eq(1)').text().trim();
+                        
                             var cantidadActual = parseInt($(this).find('td:eq(4)').text().trim());
                             var nuevaCantidad = cantidadActual + parseInt(data[i].cantidad);
                             $(this).find('td:eq(4)').text(nuevaCantidad);
@@ -422,7 +418,7 @@ function existeCodigoEnTabla(codigo) {
 function existeCodigoEnTabla_elemento(codigo) {
     var existe = false;
     $('#tabla_elementos tbody tr').each(function () {
-        var codigoTabla = $(this).find('td:eq(2)').text().trim();
+        var codigoTabla = $(this).find('td:eq(1)').text().trim();
         if (codigoTabla === codigo) {
             existe = true;
             return false; // Terminar el bucle
