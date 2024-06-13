@@ -851,7 +851,7 @@ function grabar_datos() {
                 $(this).find('td').eq(7).css("background-color", "white");
             }
             
-            if ((cant_almacen === '' || cant_almacen <= 0) && tipo !=='LE') {
+            if ((cant_almacen === '' || cant_almacen <= 0) && tipo !=='EL') {
                 alertify.error('Linea: ' + lina2 + ' ' + 'Falta Cantidad Invalida');
                 $(this).find('td').eq(8).css("background-color", "#F67280");
                 band = false;
