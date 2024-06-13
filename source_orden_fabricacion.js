@@ -133,7 +133,8 @@ function busca_pro_iso(producto, id) {
             $("#nro_of_iso").val(idcl[3]);
             $("#cant_planificada").val(idcl[4]);
             $("#cant_merma").val(0);
-            llena_detalle(producto, id);
+            //llena_detalle(producto, id);
+            llena_detalle_elementos(producto, id);
             $('#btn_guardar').show();
             $("#modal_tabla_productos").modal('hide');
             $('#btn_añadir_pro').show();
@@ -148,6 +149,86 @@ function busca_pro_iso(producto, id) {
 
         }
     });
+}
+
+
+function llena_detalle_elementos(producto, id) {
+    //console.log(producto);
+    $.ajax({
+        beforeSend: function (x) {
+
+        },
+        url: 'pone_datos_det_elementos.php',
+        dataType: 'json',
+        type: 'POST',
+        data: { producto, id },
+        success: function (data) {
+            console.log(data); //console.log(data[0]);
+            if (data == 0) {
+                var n = noty({
+                    text: "No existe el articulo...!",
+                    theme: 'relax',
+                    layout: 'center',
+                    type: 'error',
+                    timeout: 2000,
+                });
+            } else {
+
+                for (let i = 0; i < data.length; i++) {
+                    fil = ultimo_valor_fila()
+                    if (fil === 0) {
+
+                        $("#tabla_articulos > tbody > tr > td").remove();
+                    }
+                    var num = ultimo_valor_fila() + 1;
+
+
+                    precio = 1;
+                    // precio = parseFloat(data[i].precio).toFixed(4);
+                    precio_igv = precio * 1.18;
+                    precioigv_parse = parseFloat(precio_igv).toFixed(4);
+                    li = parseFloat(num - 1).toFixed(0);
+
+
+                    $("#tabla_articulos > tbody").append("<tr><td   class='center'>" + num + "</td>" +
+                        "<td style='text-align:center'> <select class='form-control' onchange='' style='width: 100%;font-size:12px;' tabindex='-1' aria-hidden='true'  id='proceso'>
+                        <option value='ELEMENTO' SELECTED>ELEMENTO</option></select></td>" +
+                        "<td class='center'>" + data[i].codmatS + "</td>" +
+                        "<td style='center'>" + data[i].DesLarga + "</td>" +
+                        "<td style='center'>" + data[i].Tipos + "</td>" +
+
+
+                        "<td style='text-align:center'><input type='number'  class='form-control pull-right' id='cantidad_base'  autocomplete='off' style='font-size: 12px; text-align:center; color:black; font-weight: bold;' value='1' onchange='calcular_total_item(this," + li + ")' onkeyup='calcular_total_item(this," + li + ");' ></td>" +
+
+                        "<td style='text-align:center'><input type='number'  class='form-control pull-right' id='cantidad_item'  autocomplete='off' style='font-size: 12px; text-align:center; color:black; font-weight: bold;' value='" + precio + "' ></td>" +
+
+
+                        "<td style='text-align:center' onchange=''><select class='form-control' onchange='carga_stock(this," + li + ");' style='width: 100%;font-size:12px;' tabindex='-1' aria-hidden='true'  id='almacen_detalle'><option value='' SELECTED>ELIJA.</option><option value='ALM01' >ALMACEN PRINCIPAL</option><option value='ALM02'>ALMACEN SAGITARIO</option><option value='ALM03' >ALMACEN PRINTS</option><option value='ALM04' >ALMACEN DE IMPORTACION</option><option value='ALM05'>ALMACEN DE CUARENTENA</option><option value='ALM06'  >ALMACEN DE PRODUCCION</option><option value='ALM07' >ALMACEN DE PRE PRENSA</option><option value='ALM08' >ALMACEN DE CORTE</option><option value='ALM09' >ALMACEN DE IMPRESION</option><option value='ALM10' >ALMACEN DE TROQUELADO</option><option value='ALM11'>ALMACEN DE PEGADO</option><option value='ALM12' >ALMACEN DE FORMADO</option><option value='ALM13' >ALMACEN DE TERMOFORMADO</option><option value='ALM14'>ALMACEN DE SELLADO</option><option value='ALM15' >ALMACEN DE MANUALIDADES</option><option value='ALM16' >ALMACEN DE EMBALAJE</option><option value='ALM17' >ALMACEN DE PRODUCTO TERMINADO</option><option value='ALM18' >ALMACEN DE PT EXTERNO</option><option value='ALM19' >ALMACEN DE PT INMOBILIZADO</option><option value='ALM20' >ALMACEN DE TRANSITO</option></select></td>" +
+
+                        "<td style='text-align:center'><input type='number'  class='form-control pull-right' value ='' id='cant_stock'  autocomplete='off' style='font-size: 12px; text-align:center; color:black; font-weight: bold;' disabled></td>" +
+
+                        "<td style='display:none'>" + data[i].docentry + "</td>" +
+                        "<td style='display:none'>" + data[i].id_validacion + "</td>" +
+                        "<td style='text-align:center'><button class='btn  btn-danger btn-xs delete rounded-circle'><i class='fa fa-trash'></i></button></td>"
+                    );
+
+                    $("#btn-procesa").prop("disabled", false);
+                    $('#cantidad_base').focus();
+                    carga_datos();
+
+                    //listar_almacen2();
+
+                }
+
+
+            }
+
+        },
+        error: function (jqXHR, estado, error) {
+
+        }
+    });
+
 }
 
 
