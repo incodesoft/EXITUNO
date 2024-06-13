@@ -46,6 +46,7 @@ $(document).on('click', '#validar', function () {
         document.getElementById('btn_validar').disabled = false;
         llena_detalle(producto);
         pone_detalle_tabla2(producto);
+        llena_elementos(producto)
 
 
     } else {
@@ -126,6 +127,24 @@ function ultimo_valor_fila_tabla2() {
     return data;
 }
 
+
+function llena_elementos(producto){
+     $.ajax({
+        beforeSend: function () {
+        
+        },
+        url: "lista_elementos.php",
+        type: "POST",
+        data: {  producto: producto },
+        success: function (x) {
+            $("#tabla_elementos").html(x);
+            $("#tab_element").DataTable({
+            order: [[0, 'asc']]
+            });
+        },
+        error: function (jqXHR, estado, error) { },
+    });
+}
 
 
 function llena_detalle(producto) {
