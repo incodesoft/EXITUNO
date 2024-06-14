@@ -661,7 +661,7 @@ function carga_stock(input, linea) {
 
 
 function carga_stock_2daexplo(input, linea) {
-
+console.log("HOLA")
     var fila = obtenerFila3(input);
     codigo = $($("#table_explo2").find("tbody > tr")[fila]).children("td")[2].innerHTML;
     almacen = $($("#table_explo2").find("tbody > tr")[fila]).children("td")[7].children[0].value;
