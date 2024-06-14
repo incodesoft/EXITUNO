@@ -1955,7 +1955,7 @@ function registrar_datos() {
     fechaf_modal = $("#fechaf_modal").val();
 
     maquinaria_modal = $("#maquinaria_modal").val();
-    turno_modal = $("#turno_modal").val();
+    turno_modal = $("#list_turno option:selected").val();
     operario_modal = $("#operario_modal").val();
     
 
