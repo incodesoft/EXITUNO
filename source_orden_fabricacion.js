@@ -1736,6 +1736,22 @@ $(document).on('click', '#procesos', function () {
 });
 
 
+$(document).on('click', '#procesos_docito', function () {
+
+    if ($(this).is(':checked')) {
+        $(this).parents("tr").find("td").css("background-color", "LightGreen");
+        document.getElementById('btn_ofs_kho').disabled = false;
+
+
+    } else {
+        $(this).parents("tr").find("td").css("background-color", "white");
+        document.getElementById('btn_ofs_kho').disabled = true;
+
+
+    }
+});
+
+
 
 $(document).on('click', '#procesos2', function () {
 
