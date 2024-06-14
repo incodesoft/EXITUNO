@@ -2415,6 +2415,16 @@ function reg_transformar() {
 }
 
 function registrardetcito(){
+Swal.fire({
+    icon: 'success',
+    title: 'Registro Exitoso',
+    text: 'Materiales Registrados.',
+    showConfirmButton: false, // Oculta el botón "Aceptar"
+    timer: 2000
+}).then(function () {
+                    
+});
+    
 $('#table_explo2 > tbody > tr').each(function () {
     linea = $(this).find('td').eq(0).html()
     lina2 = linea;
@@ -2439,17 +2449,7 @@ $('#table_explo2 > tbody > tr').each(function () {
         data: '&line=' + line + '&proceso=' + proceso + '&codigo=' + codigo + '&descripcion=' + descripcion + '&tipo=' + tipo +
         '&cant_base=' + cant_base + '&cant_requerida=' + cant_requerida + '&almacen_det=' + almacen_det + '&cant_almacen=' + cant_almacen + '&docentry=' + docentry + '&global=' + global + '&id_validacion=' + id_validacion,
         success: function (data) {
-            Swal.fire({
-                    icon: 'success',
-                    title: 'Registro Exitoso',
-                    text: 'Materiales Registrados.',
-                    showConfirmButton: false, // Oculta el botón "Aceptar"
-                    timer: 2000
-            }).then(function () {
-                    
-
-            });
-            
+           
             $("#table_explo2 > tbody:last").children().remove();
             $("#modal_2da_explosion").modal("hide");
         },
