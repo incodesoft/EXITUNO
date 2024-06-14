@@ -2676,6 +2676,140 @@ function registrar_OFS() {
 }
 
 
+function registrar_OFS_demacrado() {
+    i = 0001;
+
+    $("[name='procesos[]']:checked").each(function (key) {
+        var docentry_of = $(this).parents("tr").find('td:eq(1)').text();
+        var docentry = docentry_of;
+        var proceso = $(this).parents("tr").find('td:eq(19)').text();
+        var nro_producto = $(this).parents("tr").find('input[id="codigoItem"]').val();
+        var descripcion = $(this).parents("tr").find('input[id="descItem"]').val();
+        var cant_planificada = $(this).parents("tr").find('td:eq(5)').text();
+
+        var nro_of_isograf = $(this).parents("tr").find('td:eq(6)').text();
+        //var nro_of_isograf = 'PRODUCTO_PROCESO_'+i;
+        var tipo = $(this).parents("tr").find('td:eq(7)').text();
+        // var estado = $(this).parents("tr").find('td:eq(7)').text();
+        var cod_prodc = $(this).parents("tr").find('td:eq(9)').text();
+        var primeros_ocho_digitos = cod_prodc.substring(0, 8);
+        //console.log(primeros_ocho_digitos);
+        var ultimos_cinco_digitos = primeros_ocho_digitos.slice(-5);
+        //console.log(ultimos_cinco_digitos);
+        
+        var estado = "PP";  //Producto Proceso
+
+        var nro_producto2 = 'PRODUCTO_PROCESO_' + i; //
+        var unidad_medida = $(this).parents("tr").find('td:eq(10)').text();
+        var descripcion2 = $(this).parents("tr").find('td:eq(11)').text();
+        var almacen = $(this).parents("tr").find('td:eq(12)').text();
+        var fecha_op = $(this).parents("tr").find('td:eq(13)').text();
+        var fecha_inicio = $(this).parents("tr").find('td:eq(14)').text();
+        var fecha_fin = $(this).parents("tr").find('td:eq(15)').text();
+        var cant_merma = $(this).parents("tr").find('td:eq(16)').text();
+
+        nueva_cantidad = 0;
+
+        // if (nro_producto === '') {
+        //     nro_producto = cod_prodc + proceso
+        // }
+
+        if (nro_producto === '') {
+            nro_producto = '104' + ultimos_cinco_digitos + '000' + i
+        }
+        
+        if (descripcion === '') {
+            descripcion = 'PP' + proceso + '_' + descripcion2
+        }
+        //var ingresarcantidad2 = parseFloat(ingresarcantidad);
+
+        $.ajax({
+            beforeSend: function () { },
+            url: 'procesa_of_cab.php',
+            type: 'POST',
+            data: { tipo: tipo, estado: estado, nro_producto: nro_producto, unidad_medida: unidad_medida, descripcion: descripcion,
+                   cant_planificada: cant_planificada, almacen: almacen, fecha_op: fecha_op, fecha_inicio: fecha_inicio, fecha_fin: fecha_fin,
+                   nro_of_isograf: nro_of_isograf, cant_merma: cant_merma, nueva_cantidad: nueva_cantidad },
+            success: function (data) {
+                liberar(docentry, 0);
+
+                global = parseInt(data);
+                console.log(global);
+                migrar_sap(global, 1)
+                if (global == 0) {
+                    alertify.error("No Inserto");
+                } else {
+                    $.ajax({
+                        beforeSend: function () {
+                        },
+                        url: 'procesa_of_det_new.php',
+                        type: 'POST',
+                        data: { docentry: global, docentry_of: docentry_of, proceso: proceso, cant_planificada: cant_planificada },
+                        success: function (data) {
+                            var n = noty({
+                                text: "Procesando venta...  articulo actual: " + codigo,
+                                theme: 'relax',
+                                layout: 'topLeft',
+                                type: 'success',
+                                timeout: 2000,
+                            });
+
+                            $("#tabla_articulos > tbody:last").children().remove();
+
+
+                        },
+                        error: function (jqXHR, estado, error) {
+                            $("#errores").html('Error... ' + estado + '  ' + error);
+                        }
+                    });
+                    $.ajax({
+                        beforeSend: function () {
+                        },
+                        url: 'inserta_apt_det.php',
+                        type: 'POST',
+                        data: '&doc_of=' + docentry_of + '&proceso=' + proceso + '&items=' + nro_producto + '&cantidad=' + cant_planificada + '&global=' + global,
+                        success: function (data) {
+
+
+                        },
+                        error: function (jqXHR, estado, error) {
+                            $("#errores").html('Error... ' + estado + '  ' + error);
+                        }
+                    });
+                    $.ajax({
+                        beforeSend: function () {
+                        },
+                        url: 'inserta_ofs.php',
+                        type: 'POST',
+                        data: '&docentry_of=' + docentry_of + '&proceso=' + proceso + '&ingresarcantidad=' + nro_producto + '&cantidad=' + cant_planificada,
+                        success: function (data) {
+
+
+
+
+                        },
+                        error: function (jqXHR, estado, error) {
+                            $("#errores").html('Error... ' + estado + '  ' + error);
+                        }
+                    });
+                    $("#modal_transformer").modal("hide");
+                    $("#modal_transformarOP").modal("hide");
+                    lista_of_reg()
+
+                }
+
+
+            },
+
+            error: function (jqXHR, estado, error) {
+
+            },
+        });
+        i++;
+    });
+}
+
+
 
 function registrar_OFS_2da() {
     i = 1;
