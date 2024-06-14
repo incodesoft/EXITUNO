@@ -2273,7 +2273,7 @@ function transformar_of(docentry) {
 
 
 function listado_materiales_transf2(docentry) {
-    $("#modal_transformarOP").modal("toggle");
+    $("#modalcito_xd").modal("toggle");
 
     $.ajax({
         url: "listado_datosMregis.php",
@@ -2283,7 +2283,7 @@ function listado_materiales_transf2(docentry) {
             docentry,
         },
         success: function (x) {
-            $("#tabla_transformer").html(x);
+            $("#tabla_transformer_xd").html(x);
             $("#tablita_2da").DataTable({
                 order: [[1, 'asc']]
             });
@@ -2418,14 +2418,14 @@ $('#table_explo2 > tbody > tr').each(function () {
 function reg_2da_explosion() {
     $("#modal_ver_datos_explo2").modal("toggle");
 
-    var docentry = $('#table_explo2 > tbody > tr').find('td').eq(1).html();
-    var proceso = $('#table_explo2 > tbody > tr').find('td').eq(11).html();
-    var isograf = $('#table_explo2 > tbody > tr').find('td').eq(12).html();
+    var docentry = $('#tablita_2da > tbody > tr').find('td').eq(1).html();
+    var proceso = $('#tablita_2da > tbody > tr').find('td').eq(11).html();
+    var isograf = $('#tablita_2da > tbody > tr').find('td').eq(12).html();
 
     //console.log(docentry);
 
     $.ajax({
-        url: "lista_mate.php",
+        url: "lista_mate_procesos.php",
 
         type: "POST",
         data: {
@@ -2433,7 +2433,7 @@ function reg_2da_explosion() {
         },
         success: function (x) {
             $("#tabla_ver2daexplo").html(x);
-            $("#tablaofs").DataTable({
+            $("#tablita_2da").DataTable({
                 order: [[1, 'asc']]
             });
 
