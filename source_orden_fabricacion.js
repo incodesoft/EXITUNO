@@ -2677,6 +2677,7 @@ function registrar_OFS() {
 
 
 function registrar_OFS_demacrado() {
+    console.log("hola")
     i = 0001;
 
     $("[name='procesos_docito[]']:checked").each(function (key) {
