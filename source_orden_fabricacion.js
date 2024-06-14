@@ -660,6 +660,36 @@ function carga_stock(input, linea) {
 }
 
 
+function carga_stock_2daexplo(input, linea) {
+
+    var fila = obtenerFila3(input);
+    codigo = $($("#table_explo2").find("tbody > tr")[fila]).children("td")[2].innerHTML;
+    almacen = $($("#table_explo2").find("tbody > tr")[fila]).children("td")[7].children[0].value;
+    $(document).ready(function () {
+        $.ajax({
+            beforeSend: function () {
+                $("#cant_stock").html("Recuperando Lista ...");
+            },
+            url: 'listar_stock_almacen.php',
+            type: 'POST',
+            data: { codigo: codigo, almacen: almacen },
+            success: function (x) {
+                //console.log(x);
+                var cod = parseFloat(x).toFixed(4)
+                if (isNaN(cod)) cod = 0
+                // $("#cant_stock_explo2").html(cod);
+                $($("#table_explo2").find("tbody > tr")[fila]).children("td")[8].children[0].value = cod
+
+                // let celdas2 = document.getElementById("table_explo2").rows[fila].cells;
+                // celdas2[8].innerHTML = cod;
+            },
+            error: function (jqXHR, estado, error) {
+            }
+        });
+    });
+}
+
+
 
 function cargar_automatico_stock() {
     almacen = $('#tabla_articulos > tbody > tr').find("td").find('select[id="almacen_detalle"]').find('option:selected').val();
