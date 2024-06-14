@@ -2331,7 +2331,7 @@ function listado_materiales_transf2(docentry) {
         success: function (x) {
             $("#tabla_transformer_xd").html(x);
             $("#tablita_2da").DataTable({
-                order: [[1, 'asc']]
+                order: [[2, 'asc']]
             });
         },
         error: function (jqXHR, estado, error) { },
