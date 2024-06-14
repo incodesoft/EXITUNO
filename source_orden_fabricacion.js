@@ -2679,12 +2679,12 @@ function registrar_OFS() {
 function registrar_OFS_demacrado() {
     i = 0001;
 
-    $("[name='procesos[]']:checked").each(function (key) {
+    $("[name='procesos_docito[]']:checked").each(function (key) {
         var docentry_of = $(this).parents("tr").find('td:eq(1)').text();
         var docentry = docentry_of;
         var proceso = $(this).parents("tr").find('td:eq(19)').text();
-        var nro_producto = $(this).parents("tr").find('input[id="codigoItem"]').val();
-        var descripcion = $(this).parents("tr").find('input[id="descItem"]').val();
+        var nro_producto = $(this).parents("tr").find('input[id="codigoItem_2dita"]').val();
+        var descripcion = $(this).parents("tr").find('input[id="descItem_2dita"]').val();
         var cant_planificada = $(this).parents("tr").find('td:eq(5)').text();
 
         var nro_of_isograf = $(this).parents("tr").find('td:eq(6)').text();
@@ -2792,8 +2792,8 @@ function registrar_OFS_demacrado() {
                             $("#errores").html('Error... ' + estado + '  ' + error);
                         }
                     });
-                    $("#modal_transformer").modal("hide");
-                    $("#modal_transformarOP").modal("hide");
+                    $("#modal_ver_datos_explo2").modal("hide");
+                    $("#modalcito_xd").modal("hide");
                     lista_of_reg()
 
                 }
