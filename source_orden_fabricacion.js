@@ -661,7 +661,7 @@ function carga_stock(input, linea) {
 
 
 function carga_stock_2daexplo(input, linea) {
-console.log("HOLA")
+//console.log("HOLA")
     var fila = obtenerFila3(input);
     codigo = $($("#table_explo2").find("tbody > tr")[fila]).children("td")[2].innerHTML;
     almacen = $($("#table_explo2").find("tbody > tr")[fila]).children("td")[7].children[0].value;
@@ -820,7 +820,7 @@ function calcular_total_item2da_explo(input, linea) {
     cantidad_base = parseFloat($($("#table_explo2").find("tbody > tr")[fila]).children("td")[5].children[0].value);
     cantidad_planificada = parseFloat($("#cant_planificada").val());
     var monto = parseFloat((cantidad_base * cantidad_planificada)).toFixed(4);
-    $($("#tabla_articulos").find("tbody > tr")[fila]).children("td")[6].children[0].value = monto
+    $($("#table_explo2").find("tbody > tr")[fila]).children("td")[6].children[0].value = monto
 }
 
 
