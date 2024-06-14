@@ -2272,6 +2272,28 @@ function transformar_of(docentry) {
 }
 
 
+function listado_materiales_transf2(docentry) {
+    $("#modal_transformarOP").modal("toggle");
+
+    $.ajax({
+        url: "listado_datosMregis.php",
+
+        type: "POST",
+        data: {
+            docentry,
+        },
+        success: function (x) {
+            $("#tabla_transformer").html(x);
+            $("#tablita_2da").DataTable({
+                order: [[1, 'asc']]
+            });
+        },
+        error: function (jqXHR, estado, error) { },
+    });
+
+}
+
+
 function listado_materiales_transf(docentry) {
     $("#modal_2da_explosion").modal("toggle");
 
