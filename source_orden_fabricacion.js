@@ -2346,6 +2346,52 @@ function reg_transformar() {
 
 }
 
+function registrardetcito(){
+$('#table_explo2 > tbody > tr').each(function () {
+    linea = $(this).find('td').eq(0).html()
+    lina2 = linea;
+    var line = parseInt(linea);
+    var proceso = $(this).find("td").find('select[id="proceso_explo2"]').find('option:selected').val();
+    var codigo = $(this).find('td').eq(2).html();
+    var descripcion = $(this).find('td').eq(3).html();
+    var tipo = $(this).find('td').eq(4).html();
+    var cant_base = $(this).find("td").find('input[id="cantidad_base_explo2"]').val();
+    var cant_requerida = $(this).find("td").find('input[id="cantidad_item_explo2"]').val();
+    var almacen_det = $(this).find("td").find('select[id="almacen_detalle_explo2"]').find('option:selected').val();
+    var cant_almacen = $(this).find("td").find('input[id="cant_stock_explo2"]').val();
+    var docentry = $(this).find('td').eq(9).html();
+    var id_validacion = 1;
+    var global = $(this).find('td').eq(10).html();
+
+    $.ajax({
+        beforeSend: function () {
+        },
+        url: 'procesa_of_det.php',
+        type: 'POST',
+        data: '&line=' + line + '&proceso=' + proceso + '&codigo=' + codigo + '&descripcion=' + descripcion + '&tipo=' + tipo +
+        '&cant_base=' + cant_base + '&cant_requerida=' + cant_requerida + '&almacen_det=' + almacen_det + '&cant_almacen=' + cant_almacen + '&docentry=' + docentry + '&global=' + global + '&id_validacion=' + id_validacion,
+        success: function (data) {
+            Swal.fire({
+                    icon: 'success',
+                    title: 'Registro Exitoso',
+                    text: 'Materiales Registrados.',
+                    showConfirmButton: false, // Oculta el botón "Aceptar"
+                    timer: 2000
+            }).then(function () {
+                    
+
+            });
+            
+            $("#table_explo2 > tbody:last").children().remove();
+            $("#modal_2da_explosion").modal("hide");
+        },
+        error: function (jqXHR, estado, error) {
+        $("#errores").html('Error... ' + estado + '  ' + error);
+        }
+    });
+});
+    
+}
 
 function reg_2da_explosion() {
     $("#modal_ver_datos_explo2").modal("toggle");
