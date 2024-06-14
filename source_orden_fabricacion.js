@@ -2433,7 +2433,7 @@ function reg_2da_explosion() {
         },
         success: function (x) {
             $("#tabla_ver2daexplo").html(x);
-            $("#tablita_2da").DataTable({
+            $("#tablaofs").DataTable({
                 order: [[1, 'asc']]
             });
 
