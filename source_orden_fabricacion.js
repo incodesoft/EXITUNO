@@ -1142,7 +1142,7 @@ function recibo_produccion(nro_of_isograf) {
                         url: "consulta_recibo_prod.php",
                         type: "POST",
                         data: {
-                            docentry, total, pliego_cant, minutos
+                            docentry:docentry, total:total, pliego_cant:pliego_cant, minutos:minutos
                         },
                         success: function (x) {
                             $("#tabla_recibo").html(x);
