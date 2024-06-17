@@ -2134,6 +2134,8 @@ function registrar_reciboP() {
             var cantidad_planificada = $(this).parents("tr").find('td:eq(5)').text();
             var cantidad_pendiente = $(this).parents("tr").find('td:eq(6)').text();
             var cantidad_procesar = $(this).parents("tr").find('td:eq(7)').text();
+            var cant_mala =  $(this).parents("tr").find('input[id="cantMala1"]').val();
+            var cant_mala2 = parseFloat(cant_mala);
 
             // var ingresarcantidad = $(this).parents("tr").find('input[id="cantRecibida"]').val();
             var almacen = $(this).parents("tr").find("#almacen_re1 option:selected").val();
@@ -2187,7 +2189,8 @@ function registrar_reciboP() {
                             var cantidad_planificada = $(this).parents("tr").find('td:eq(5)').text();
                             var cantidad_pendiente = $(this).parents("tr").find('td:eq(6)').text();
                             var cantidad_procesar = $(this).parents("tr").find('td:eq(7)').text();
-
+                            var cant_mala =  $(this).parents("tr").find('input[id="cantMala1"]').val();
+                            var cant_mala2 = parseFloat(cant_mala);
                             // var ingresarcantidad = $(this).parents("tr").find('input[id="cantRecibida"]').val();
                             var almacen = $(this).parents("tr").find("#almacen_re1 option:selected").val();
                             var docentry_cab = $(this).parents("tr").find('td:eq(9)').text();
@@ -2215,6 +2218,8 @@ function registrar_reciboP() {
                                     cantidad_pendiente +
                                     "&cantidad_procesar=" +
                                     cantidad_procesar +
+                                    "&cant_mala=" +
+                                    cant_mala2 +
                                     "&almacen=" +
                                     almacen +
                                     "&docentry_cab=" +
