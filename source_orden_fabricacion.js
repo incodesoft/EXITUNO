@@ -738,6 +738,32 @@ function lista_turno() {
 
 
 
+
+function lista_maquinaria() {
+
+    $.ajax({
+        beforeSend: function () {
+            //$("#list_maquinaria").html("Recuperando Lista ...");
+        },
+        url: 'consulta_sql_datos_maquinaria.php',
+        type: 'POST',
+        data: null,
+        success: function (x) {
+            //console.log(x);
+            
+            $("#list_maquinaria").html(x);
+             $(".select2").select2();
+
+        },
+        error: function (jqXHR, estado, error) {
+        }
+    });
+
+}
+
+
+
+
 function listar_almacen() {
     $(document).ready(function () {
         $.ajax({
@@ -1096,6 +1122,8 @@ function detalle_of(docentry) {
     $("#modal_procesar").modal("toggle");
     consulta_datos_of_cab(docentry);
     lista_turno();
+    lista_maquinaria();
+    
 }
 
 
