@@ -2165,10 +2165,10 @@ function registrar_reciboP() {
 
             // var ingresarcantidad = $(this).parents("tr").find('input[id="cantRecibida"]').val();
             var almacen = $(this).parents("tr").find("#almacen_re1 option:selected").val();
-            var docentry_cab = $(this).parents("tr").find('td:eq(9)').text();
+            var docentry_cab = $(this).parents("tr").find('td:eq(10)').text();
             // var ingresarcantidad2 = parseFloat(ingresarcantidad);
-            var merma = $(this).parents("tr").find('td:eq(10)').text();
-            var minutos = $(this).parents("tr").find('td:eq(11)').text();
+            var merma = $(this).parents("tr").find('td:eq(11)').text();
+            var minutos = $(this).parents("tr").find('td:eq(12)').text();
 
 
             // if (0 > ingresarcantidad2) {
@@ -2219,10 +2219,10 @@ function registrar_reciboP() {
                             var cant_mala2 = parseFloat(cant_mala);
                             // var ingresarcantidad = $(this).parents("tr").find('input[id="cantRecibida"]').val();
                             var almacen = $(this).parents("tr").find("#almacen_re1 option:selected").val();
-                            var docentry_cab = $(this).parents("tr").find('td:eq(9)').text();
+                            var docentry_cab = $(this).parents("tr").find('td:eq(10)').text();
                             // var ingresarcantidad2 = parseFloat(ingresarcantidad);
-                            var merma = $(this).parents("tr").find('td:eq(10)').text();
-                            var minutos = $(this).parents("tr").find('td:eq(11)').text();
+                            var merma = $(this).parents("tr").find('td:eq(11)').text();
+                            var minutos = $(this).parents("tr").find('td:eq(12)').text();
 
 
                             $.ajax({
