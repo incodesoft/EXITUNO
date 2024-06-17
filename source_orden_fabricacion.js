@@ -2008,7 +2008,7 @@ function registrar_datos() {
     fechai_modal = $("#fechai_modal").val();
     fechaf_modal = $("#fechaf_modal").val();
 
-    maquinaria_modal = $("#maquinaria_modal").val();
+    maquinaria_modal = $("#list_maquinaria option:selected").val();
     turno_modal = $("#list_turno option:selected").val();
     operario_modal = $("#operario_modal").val();
     
