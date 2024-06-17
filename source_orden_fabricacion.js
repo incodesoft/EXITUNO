@@ -1826,6 +1826,32 @@ $(document).on('input', '#ingresarCant', function () {
 
 
 
+$(document).on('input', '#cantMala1', function () {
+    var valor = $(this).val();
+
+    if (valor.length > 0) {
+        if ($(this).is('input[type="number"]')) {
+            $(this).parents("tr").find("td").css("background-color", "LightGreen");
+            document.getElementById('btn_regis_recibo').disabled = false
+            $(this).parents("tr").find('td:eq(0) input[type="checkbox"]').prop("checked", true)
+
+
+        } else {
+            $(this).parents("tr").find("td").css("background-color", "white");
+            document.getElementById('btn_regis_recibo').disabled = true
+
+        }
+    } else {
+        $(this).closest("tr").find("td").css("background-color", "");
+        document.getElementById('btn_regis_recibo').disabled = true;
+        $(this).parents("tr").find('td:eq(0) input[type="checkbox"]').prop("checked", false)
+
+    }
+});
+
+
+
+
 
 
 
