@@ -1668,6 +1668,7 @@ function consulta_datos_of_cab(docentry) {
             $("#almacen_modal").val(idcl[7]);
             $("#fechai_modal").val(idcl[10]);
             $("#fechaf_modal").val(idcl[11]);
+            $("#operario_modal").val(idcl[12]);
 
             consulta_datos_of_det(docentry);
         },
@@ -2641,6 +2642,7 @@ function cargar_transformer_cab(docentry) {
             $("#trans_fechaOp").val(idcl[9]);
             $("#trans_fechaInicio").val(idcl[10]);
             $("#trans_fechafin").val(idcl[11]);
+            
         },
         error: function (jqXHR, estado, error) { },
     });
