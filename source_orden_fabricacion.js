@@ -1561,6 +1561,9 @@ function recibo_produccion_cab(docentry) {
             $("#modal_estado").val(idcl[2]);
             $("#modal_fi").val(idcl[10]);
             $("#modal_ff").val(idcl[11]);
+            $("#modal_maqui").val(idcl[15]);
+            $("#modal_turno").val(idcl[16]);
+            $("#modal_opera").val(idcl[17]);
 
         },
         error: function (jqXHR, estado, error) { },
