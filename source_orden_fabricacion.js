@@ -1668,7 +1668,7 @@ function consulta_datos_of_cab(docentry) {
             $("#almacen_modal").val(idcl[7]);
             $("#fechai_modal").val(idcl[10]);
             $("#fechaf_modal").val(idcl[11]);
-            $("#operario_modal").val(idcl[13]);
+            $("#operario_modal").val(idcl[14]);
 
             consulta_datos_of_det(docentry);
         },
