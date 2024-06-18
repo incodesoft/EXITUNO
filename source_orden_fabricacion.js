@@ -2663,7 +2663,7 @@ function registrar_devolucion(){
 
         $.ajax({
             beforeSend: function () { },
-            url: "inserta_datos_entrega_det.php",
+            url: "inserta_datos_devolucion.php",
             type: "POST",
             data:
             "&baseentry=" +
