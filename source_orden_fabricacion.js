@@ -2200,7 +2200,12 @@ function registrar_reciboP() {
             var almacen = $(this).parents("tr").find("#almacen_re1 option:selected").val();
             var docentry_cab = $(this).parents("tr").find('td:eq(10)').text();
             // var ingresarcantidad2 = parseFloat(ingresarcantidad);
-            var merma = $(this).parents("tr").find('td:eq(11)').text();
+            
+            //var merma = $(this).parents("tr").find('td:eq(11)').text();
+
+            var merma =  $(this).parents("tr").find('input[id="cantMercita"]').val();
+            var merma2 = parseFloat(merma);
+            
             var minutos = $(this).parents("tr").find('td:eq(12)').text();
 
 
@@ -2254,7 +2259,13 @@ function registrar_reciboP() {
                             var almacen = $(this).parents("tr").find("#almacen_re1 option:selected").val();
                             var docentry_cab = $(this).parents("tr").find('td:eq(10)').text();
                             // var ingresarcantidad2 = parseFloat(ingresarcantidad);
-                            var merma = $(this).parents("tr").find('td:eq(11)').text();
+
+                            
+                            //var merma = $(this).parents("tr").find('td:eq(11)').text();
+
+                            var merma =  $(this).parents("tr").find('input[id="cantMercita"]').val();
+                            var merma2 = parseFloat(merma);
+                            
                             var minutos = $(this).parents("tr").find('td:eq(12)').text();
 
 
@@ -2286,7 +2297,7 @@ function registrar_reciboP() {
                                     "&docentry=" +
                                     global +
                                     "&merma=" +
-                                    merma +
+                                    merma2 +
                                     "&minutos=" +
                                     minutos,
                                 success: function (data) {
