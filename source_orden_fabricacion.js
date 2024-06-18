@@ -1493,6 +1493,9 @@ function eventos_of(docentry, nro_isograf) {
 
 
 function listar_eventos(docentry, nro_isograf){
+     $("#iso_evento").val(nro_isograf);
+    $("#doc_evento").val(docentry);
+    
      $.ajax({
         url: "consulta_eventos_registrados.php",
         type: "POST",
@@ -1504,8 +1507,7 @@ function listar_eventos(docentry, nro_isograf){
             $("#tabla_eventos2").DataTable({
                 order: [[0, 'asc']]
             });
-            $("#iso_evento").val(nro_isograf);
-            $("#doc_evento").val(docentry);
+           
         },
         error: function (jqXHR, estado, error) { },
     });
