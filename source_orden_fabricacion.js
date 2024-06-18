@@ -1488,14 +1488,15 @@ function resumen_por_of(docentry, nro_isograf) {
 function eventos_of(docentry, nro_isograf) {
 
     $("#modal_eventosOF").modal("toggle");
+
+    $("#iso_evento").val(nro_isograf);
+    $("#doc_evento").val(docentry);
     listar_eventos(docentry, nro_isograf);
 }
 
 
 function listar_eventos(docentry, nro_isograf){
-     $("#iso_evento").val(nro_isograf);
-    $("#doc_evento").val(docentry);
-    
+   
      $.ajax({
         url: "consulta_eventos_registrados.php",
         type: "POST",
