@@ -1485,6 +1485,33 @@ function resumen_por_of(docentry, nro_isograf) {
 
 
 
+function eventos_of(docentry, nro_isograf) {
+
+    $("#modal_eventosOF").modal("toggle");
+
+    $.ajax({
+        url: "consulta_eventos_registrados.php",
+        type: "POST",
+        data: {
+            docentry:docentry, nro_isograf:nro_isograf
+        },
+        success: function (x) {
+            $("#tabla_eventos").html(x);
+            $("#tabla_eventos2").DataTable({
+                order: [[0, 'asc']]
+            });
+            $("#iso_evento").val(nro_isograf);
+        },
+        error: function (jqXHR, estado, error) { },
+    });
+
+}
+
+
+
+
+
+
 function recibo_produccion_nroisograf(nro_of_isograf) {
     var idcl = nro_of_isograf.split("|");
 
