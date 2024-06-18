@@ -1917,6 +1917,30 @@ $(document).on('input', '#ingresarCant', function () {
 });
 
 
+$(document).on('input', '#cant_devolucion', function () {
+    var valor = $(this).val();
+
+    if (valor.length > 0) {
+        if ($(this).is('input[type="number"]')) {
+            $(this).parents("tr").find("td").css("background-color", "LightGreen");
+            document.getElementById('btn_devolucion').disabled = false
+            $(this).parents("tr").find('td:eq(0) input[type="checkbox"]').prop("checked", true)
+
+
+        } else {
+            $(this).parents("tr").find("td").css("background-color", "white");
+            document.getElementById('btn_devolucion').disabled = true
+
+        }
+    } else {
+        $(this).closest("tr").find("td").css("background-color", "");
+        document.getElementById('btn_devolucion').disabled = true;
+        $(this).parents("tr").find('td:eq(0) input[type="checkbox"]').prop("checked", false)
+
+    }
+});
+
+
 
 $(document).on('input', '#cantMala1', function () {
     var valor = $(this).val();
@@ -2620,6 +2644,12 @@ $('#table_explo2 > tbody > tr').each(function () {
         }
     });
 });
+    
+}
+
+
+function registrar_devolucion(){
+
     
 }
 
