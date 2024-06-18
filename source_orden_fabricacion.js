@@ -2649,7 +2649,51 @@ $('#table_explo2 > tbody > tr').each(function () {
 
 
 function registrar_devolucion(){
+    $("[name='devo[]']:checked").each(function (key) {
+        var baseentry = $(this).parents("tr").find('td:eq(1)').text();
+        var proceso = $(this).parents("tr").find('td:eq(2)').text();
+        var codigo = $(this).parents("tr").find('td:eq(3)').text();
+        var descripcion = $(this).parents("tr").find('td:eq(4)').text();
+        var tipo = $(this).parents("tr").find('td:eq(5)').text();
+        var cant_ingresada = $(this).parents("tr").find('td:eq(6)').text();
+        var cant_devo =  $(this).parents("tr").find('input[id="cant_devolucion"]').val();
+        var cant_devo2 = parseFloat(cant_devo);
 
+        var almacen = $(this).parents("tr").find('td:eq(8)').text();
+
+        $.ajax({
+            beforeSend: function () { },
+            url: "inserta_datos_entrega_det.php",
+            type: "POST",
+            data:
+            "&baseentry=" +
+            baseentry +
+            "&proceso=" +
+             proceso +
+            "&codigo=" +
+            codigo +
+            "&descripcion=" +
+            descripcion +
+            "&tipo=" +
+            tipo + 
+            "&cant_ingresada=" +
+            cant_ingresada +
+            "&cant_devo=" +
+            cant_devo2 +
+            "&almacen=" +
+            almacen,
+                
+             success: function (data) {
+
+             $("#modal_devolucion_entrega").modal("hide");
+
+             },
+
+             error: function (jqXHR, estado, error) {
+
+            },
+        });
+    });
     
 }
 
