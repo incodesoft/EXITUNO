@@ -1488,8 +1488,12 @@ function resumen_por_of(docentry, nro_isograf) {
 function eventos_of(docentry, nro_isograf) {
 
     $("#modal_eventosOF").modal("toggle");
+    listar_eventos(docentry, nro_isograf);
+}
 
-    $.ajax({
+
+function listar_eventos(docentry, nro_isograf){
+     $.ajax({
         url: "consulta_eventos_registrados.php",
         type: "POST",
         data: {
@@ -1501,10 +1505,35 @@ function eventos_of(docentry, nro_isograf) {
                 order: [[0, 'asc']]
             });
             $("#iso_evento").val(nro_isograf);
+            $("#doc_evento").val(docentry);
         },
         error: function (jqXHR, estado, error) { },
     });
+}
 
+
+function registrarEventos(){
+    eventos = $("#list_eventos option:selected").val();
+    fecha = $("#event_fecha_ahora").val();
+    hora_inicio = $("#event_hora_inicio").val();
+    hora_fin = $("#event_hora_fin").val();
+    observaciones = $("#even_observaciones").val();
+    isograf = $("#iso_evento").val();
+    doc = $("#doc_evento").val();
+
+    $.ajax({
+        url: "registrar_eventos.php",
+        type: "POST",
+        data: {
+            eventos:eventos, fecha:fecha, hora_inicio:hora_inicio, hora_fin:hora_fin, observaciones:observaciones, isograf:isograf, doc:doc
+        },
+        success: function (x) {
+            
+        },
+        error: function (jqXHR, estado, error) { },
+    });    
+    
+    
 }
 
 
