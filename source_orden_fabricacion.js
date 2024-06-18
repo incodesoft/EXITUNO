@@ -2410,6 +2410,34 @@ function datos_entrega_det(docentry) {
 }
 
 
+
+function devolucion_entrega(docentry) {
+    $("#modal_devolucion_entrega").modal("toggle");
+    datos_devolucion_det(docentry);
+
+}
+
+
+function datos_devolucion_det(docentry) {
+    $.ajax({
+        url: "consulta_devolucion_det.php",
+
+        type: "POST",
+        data: {
+            docentry,
+        },
+        success: function (x) {
+            $("#tabla_devolucion_detcito").html(x);
+            $("#tabla_devo").DataTable({
+                order: [[0, 'asc']]
+            });
+        },
+        error: function (jqXHR, estado, error) { },
+    });
+}
+
+
+
 function generar_excel_RP() {
     estado = $("#estado").val();
     javascript: window.open('reporte_excel_OP.php?estado=' + estado + '');
