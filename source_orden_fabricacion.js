@@ -1531,7 +1531,7 @@ function registrarEventos(){
             eventos:eventos, fecha:fecha, hora_inicio:hora_inicio, hora_fin:hora_fin, observaciones:observaciones, nro_isograf:nro_isograf, docentry:docentry
         },
         success: function (x) {
-            listar_eventos(docentry, nro_isograf)
+            listar_eventos(docentry, nro_isograf);
         },
         error: function (jqXHR, estado, error) { },
     });    
