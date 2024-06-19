@@ -298,7 +298,7 @@ function llena_detalle(producto) {
                     });
 
 
-                    //if (!existeCodigoEnTabla(codigo)) {
+                    if (!existeCodigoEnTabla(codigo)) {
                         var num = ultimo_valor_fila() + 1;
                         precio = 1;
                         precio_igv = precio * 1.18;
@@ -312,7 +312,7 @@ function llena_detalle(producto) {
                             "<td style='center'>" + data[i].Tipos + "</td>" +
                             "<td style='center'>" + data[i].OdtCant + "</td>"
                         );
-                    //}
+                    }
                 }
             }
         },
