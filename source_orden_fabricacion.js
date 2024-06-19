@@ -1538,8 +1538,8 @@ function registrarEventos(){
     hora_inicio = $("#event_hora_inicio").val();
     hora_fin = $("#event_hora_fin").val();
     observaciones = $("#even_observaciones").val();
-    nro_isograf = $("#iso_evento").val();
-    docentry = $("#doc_evento").val();
+    nro_isograf =0;
+    docentry = 0;
     maquina = $("#lista_maquina select").val();
     bandera = true;
     if(maquina ==='Seleccione'){
