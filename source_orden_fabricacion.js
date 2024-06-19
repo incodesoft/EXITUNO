@@ -188,10 +188,11 @@ function llena_detalle_elementos(producto, id) {
                     precio_igv = precio * 1.18;
                     precioigv_parse = parseFloat(precio_igv).toFixed(4);
                     li = parseFloat(num - 1).toFixed(0);
+                    ele = 'ELE'+data[i].codmatS;
 
 
                     $("#tabla_articulos > tbody").append("<tr><td   class='center'>" + num + "</td>" +
-                        "<td style='text-align:center'> <select class='form-control' onchange='' style='width: 100%;font-size:12px;' tabindex='-1' aria-hidden='true'  id='proceso'><option value='ELEMENTO' SELECTED>ELEMENTO</option></select></td>" +
+                        "<td style='text-align:center'> <select class='form-control' onchange='' style='width: 100%;font-size:12px;' tabindex='-1' aria-hidden='true'  id='proceso'><option value='"+ele+"' SELECTED>"+ele+"</option></select></td>" +
                         "<td class='center'>" + data[i].codmatS + "</td>" +
                         "<td style='center'>" + data[i].DesLarga + "</td>" +
                         "<td style='center'>" + data[i].Tipos + "</td>" +
