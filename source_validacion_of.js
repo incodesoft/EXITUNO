@@ -158,6 +158,7 @@ function llena_elementos(producto){
         type: 'POST',
         data: {  producto: producto },
         success: function (data) {
+            console.log(data);
             if (data == 0) {
                 var n = noty({
                     text: "No existe el articulo...!",
