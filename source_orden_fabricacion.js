@@ -1541,7 +1541,19 @@ function registrarEventos(){
 
 
 
-
+function finalizar_evento(id){
+    $.ajax({
+        url: "finalizar_eventos.php",
+        type: "POST",
+        data: {
+            id
+        },
+        success: function (x) {
+            listar_eventos(docentry, nro_isograf)
+        },
+        error: function (jqXHR, estado, error) { },
+    });        
+}
 
 
 function recibo_produccion_nroisograf(nro_of_isograf) {
