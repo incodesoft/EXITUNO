@@ -1490,8 +1490,8 @@ function eventos_of(docentry, nro_isograf) {
 
     $("#modal_eventosOF").modal("toggle");
 
-    $("#iso_evento").val(nro_isograf);
-    $("#doc_evento").val(docentry);
+  //  $("#iso_evento").val(nro_isograf);
+   // $("#doc_evento").val(docentry);
     listar_eventos(docentry, nro_isograf);
      listar_maquina();
 }
