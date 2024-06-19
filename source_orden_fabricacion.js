@@ -1540,18 +1540,25 @@ function registrarEventos(){
     observaciones = $("#even_observaciones").val();
     nro_isograf = $("#iso_evento").val();
     docentry = $("#doc_evento").val();
-
-    $.ajax({
-        url: "registrar_eventos.php",
-        type: "POST",
-        data: {
-            eventos:eventos, fecha:fecha, hora_inicio:hora_inicio, hora_fin:hora_fin, observaciones:observaciones, nro_isograf:nro_isograf, docentry:docentry
-        },
-        success: function (x) {
-            listar_eventos(docentry, nro_isograf);
-        },
-        error: function (jqXHR, estado, error) { },
-    });    
+    maquina = $("#lista_maquina select").val();
+    bandera = true;
+    if(maquina ==='Seleccione'){
+        bandera= false;
+    }
+    if(bandera===true){
+        $.ajax({
+            url: "registrar_eventos.php",
+            type: "POST",
+            data: {
+                eventos:eventos, fecha:fecha, hora_inicio:hora_inicio, hora_fin:hora_fin, observaciones:observaciones, nro_isograf:nro_isograf, docentry:docentry
+            },
+            success: function (x) {
+                listar_eventos(docentry, nro_isograf);
+            },
+            error: function (jqXHR, estado, error) { },
+        }); 
+    }
+       
     
     
 }
