@@ -172,7 +172,7 @@ function llena_elementos(producto){
                    
                     $('#tabla_elementos tbody tr').each(function () {
                         var codigoTabla = $(this).find('td:eq(1)').text().trim();
-                        if (codigoTabla === data[i].iso) {
+                        //if (codigoTabla === data[i].iso) {
 
                             var codigoTabla2 = $(this).find('td:eq(1)').text().trim();
                         
@@ -180,7 +180,7 @@ function llena_elementos(producto){
                             var nuevaCantidad = cantidadActual + parseInt(data[i].cantidad);
                             $(this).find('td:eq(4)').text(nuevaCantidad);
                             return false; // Terminar el bucle
-                        }
+                       // }
                     });
 
 
