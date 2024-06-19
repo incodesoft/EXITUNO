@@ -265,7 +265,7 @@ function llena_detalle(producto) {
         type: 'POST',
         data: { producto: producto },
         success: function (data) {
-            //console.log(data); console.log(data[0]);
+            console.log(data);
             if (data == 0) {
                 var n = noty({
                     text: "No existe el articulo...!",
