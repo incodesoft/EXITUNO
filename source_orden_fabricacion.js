@@ -1550,7 +1550,7 @@ function registrarEventos(){
             url: "registrar_eventos.php",
             type: "POST",
             data: {
-                eventos:eventos, fecha:fecha, hora_inicio:hora_inicio, hora_fin:hora_fin, observaciones:observaciones, nro_isograf:nro_isograf, docentry:docentry
+                eventos:eventos, fecha:fecha, hora_inicio:hora_inicio, hora_fin:hora_fin, observaciones:observaciones, nro_isograf:nro_isograf, docentry:docentry,maquina:maquina
             },
             success: function (x) {
                 listar_eventos(docentry, nro_isograf);
