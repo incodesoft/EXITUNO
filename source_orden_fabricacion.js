@@ -2847,6 +2847,7 @@ function registrar_OFS() {
     $("[name='procesos[]']:checked").each(function (key) {
         var docentry_of = $(this).parents("tr").find('td:eq(1)').text();
         var proce_inici = $(this).parents("tr").find('td:eq(2)').text();
+        var primeras_tres_letras = proce_inici.substring(0, 3);
         var docentry = docentry_of;
         var proceso = $(this).parents("tr").find('td:eq(19)').text();
         var nro_producto = $(this).parents("tr").find('input[id="codigoItem"]').val();
@@ -2884,7 +2885,7 @@ function registrar_OFS() {
             nro_producto = '104' + ultimos_cinco_digitos + '000' + i
         }
 
-        if (proce_inici === 'ELEMENTO') {
+        if (primeras_tres_letras === 'ELE') {
             estado = "EL";
         }
         
