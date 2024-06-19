@@ -159,6 +159,7 @@ function llena_elementos(producto){
         data: {  producto: producto },
         success: function (data) {
             console.log(data);
+            console.log(data.length);
             if (data == 0) {
                 var n = noty({
                     text: "No existe el articulo...!",
@@ -185,7 +186,7 @@ function llena_elementos(producto){
                     });
 
 
-                    if (!existeCodigoEnTabla_elemento(codigo)) {
+                    //if (!existeCodigoEnTabla_elemento(codigo)) {
                         var num =  ultimo_valor_fila_elementos() + 1;
                         precio = 1;
                         precio_igv = precio * 1.18;
@@ -198,7 +199,7 @@ function llena_elementos(producto){
                             "<td style='center'>" + data[i].des_element + "</td>" +
                             "<td style='center'>" + data[i].cantidad + "</td>"
                         );
-                    }
+                    //}
                 }
             }
         },
