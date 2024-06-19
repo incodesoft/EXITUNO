@@ -282,7 +282,7 @@ function llena_detalle(producto) {
 
                     $('#tabla_articulos tbody tr').each(function () {
                         var codigoTabla = $(this).find('td:eq(1)').text().trim();
-                        //if (codigoTabla === data[i].codmatS) {
+                        if (codigoTabla === data[i].codmatS) {
 
                             var codigoTabla2 = $(this).find('td:eq(1)').text().trim();
                             if (codigoTabla2 === '0') {
@@ -294,7 +294,7 @@ function llena_detalle(producto) {
                             var nuevaCantidad = cantidadActual + parseInt(data[i].OdtCant);
                             $(this).find('td:eq(5)').text(nuevaCantidad);
                             return false; // Terminar el bucle
-                        //}
+                        }
                     });
 
 
