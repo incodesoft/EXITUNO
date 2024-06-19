@@ -1549,7 +1549,7 @@ function finalizar_evento(id){
             id
         },
         success: function (x) {
-            listar_eventos(docentry, nro_isograf)
+            
         },
         error: function (jqXHR, estado, error) { },
     });        
