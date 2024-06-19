@@ -1542,6 +1542,9 @@ function registrarEventos(){
 
 
 function finalizar_evento(id){
+    nro_isograf = $("#iso_evento").val();
+    docentry = $("#doc_evento").val();
+    
     $.ajax({
         url: "finalizar_eventos.php",
         type: "POST",
@@ -1549,7 +1552,7 @@ function finalizar_evento(id){
             id
         },
         success: function (x) {
-            
+             listar_eventos(docentry, nro_isograf);
         },
         error: function (jqXHR, estado, error) { },
     });        
