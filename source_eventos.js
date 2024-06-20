@@ -20,6 +20,15 @@ function registrarEventos(){
             },
             success: function (x) {
                 listar_eventos();
+                Swal.fire({
+                        icon: 'success',
+                        title: 'Registro Exitoso',
+                        text: 'El evento fue registrado.',
+                        showConfirmButton: false, // Oculta el botón "Aceptar"
+                        timer: 2000
+                }).then(function () {
+                      
+                });
             },
             error: function (jqXHR, estado, error) { },
         }); 
