@@ -51,26 +51,19 @@ function listar_eventos(docentry, nro_isograf){
 
 
 
-function lista_maquinaria() {
-
-    $.ajax({
-        beforeSend: function () {
-            //$("#list_maquinaria").html("Recuperando Lista ...");
-        },
-        url: 'consulta_sql_datos_maquinaria.php',
-        type: 'POST',
+function listar_maquina(){   
+     $.ajax({
+        url: "consulta_maquinas.php",
+        type: "POST",
         data: null,
         success: function (x) {
-            //console.log(x);
             
             $("#lista_maquina").html(x);
-             $(".select2").select2();
+           $(".select2").select2();
 
         },
-        error: function (jqXHR, estado, error) {
-        }
+        error: function (jqXHR, estado, error) { },
     });
-
 }
 
 
