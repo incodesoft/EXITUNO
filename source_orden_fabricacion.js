@@ -2677,6 +2677,7 @@ $('#table_explo2 > tbody > tr').each(function () {
            
             $("#table_explo2 > tbody:last").children().remove();
             $("#modal_2da_explosion").modal("hide");
+            lista_of_reg();
         },
         error: function (jqXHR, estado, error) {
         $("#errores").html('Error... ' + estado + '  ' + error);
