@@ -48,7 +48,7 @@ function listar_eventos(){
         success: function (x) {
             $("#tabla_eventos").html(x);
             $("#tabla_eventos2").DataTable({
-                order: [[0, 'asc']]
+                order: [[0, 'desc']]
             });
            
         },
