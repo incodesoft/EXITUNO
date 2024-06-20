@@ -76,17 +76,20 @@ function listar_maquina(){
 
 function finalizar_evento(id) {
 
-  alertify.confirm(
-    "Eliminar",
-    "Desea Eliminar?",
-    function (E) {
-      finalizar_evento2(id);
-      alertify.success("Eliminado");
-    },
-    function () {
-      alertify.error("Cancelado");
-    }
-  );
+     swal({
+      title: "Finalizar",
+      text: "Desea finalizar Evento?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+     })
+      .then((willDelete) => {
+        if (willDelete) {          
+          finalizar_evento2(id)
+        } else {
+          swal("Cancelado");
+        }
+      });
 }
 
 function finalizar_evento2(id){
