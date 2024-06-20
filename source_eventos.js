@@ -63,7 +63,7 @@ function lista_maquinaria() {
         success: function (x) {
             //console.log(x);
             
-            $("#list_maquinaria").html(x);
+            $("#lista_maquina").html(x);
              $(".select2").select2();
 
         },
