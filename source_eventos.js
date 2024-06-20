@@ -30,14 +30,12 @@ function registrarEventos(){
 
 
 
-function listar_eventos(docentry, nro_isograf){
+function listar_eventos(){
    
      $.ajax({
         url: "consulta_eventos_registrados.php",
         type: "POST",
-        data: {
-            docentry:docentry, nro_isograf:nro_isograf
-        },
+        data: null,
         success: function (x) {
             $("#tabla_eventos").html(x);
             $("#tabla_eventos2").DataTable({
