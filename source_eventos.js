@@ -74,9 +74,22 @@ function listar_maquina(){
 }
 
 
+function finalizar_evento(id) {
 
+  alertify.confirm(
+    "Eliminar",
+    "Desea Eliminar?",
+    function (E) {
+      finalizar_evento2(id);
+      alertify.success("Eliminado");
+    },
+    function () {
+      alertify.error("Cancelado");
+    }
+  );
+}
 
-function finalizar_evento(id){
+function finalizar_evento2(id){
     nro_isograf = $("#iso_evento").val();
     docentry = $("#doc_evento").val();
     
