@@ -74,9 +74,28 @@ function listar_maquina(){
 }
 
 
+
+function listar_Tipomaquina(){   
+     $.ajax({
+        url: "consulta_Tipomaquinas.php",
+        type: "POST",
+        data: null,
+        success: function (x) {
+          $("#selecito_materiales").html(x);
+          $(".select2").select2();
+
+        },
+        error: function (jqXHR, estado, error) { },
+    });
+}
+
+
+
+
 function busca_maquinas(){
   $("#modal_material").modal('show')
-    listar_maquina();
+    listar_Tipomaquina()
+    //listar_maquina();
 }
 
 
