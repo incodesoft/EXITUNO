@@ -6,7 +6,7 @@ function registrarEventos(){
     observaciones = $("#even_observaciones").val();
     nro_isograf =0;
     docentry = 0;
-    maquina = $("#lista_maquina select").val();
+    maquina = $("#codigo_maquinita").val();
     bandera = true;
     if(maquina ==='Seleccione'){
         bandera= false;
@@ -79,6 +79,16 @@ function busca_maquinas(){
     listar_maquina();
 }
 
+
+ function colocarMaquina(valor){
+  $("#modal_material").modal('hide')
+     
+  var client = valor;
+  var idcl = client.split("|");
+  $("#codigo_maquinita").val(idcl[0]);
+  $("#nombre_maquinita").val(idcl[1]);
+     
+ }
 
 function finalizar_evento(id) {
 
