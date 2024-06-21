@@ -65,12 +65,18 @@ function listar_maquina(){
         data: null,
         success: function (x) {
             
-            $("#lista_maquina").html(x);
-           $(".select2").select2();
+            $("#tabla_matecitox").html(x);
+           //$(".select2").select2();
 
         },
         error: function (jqXHR, estado, error) { },
     });
+}
+
+
+function busca_maquinas(){
+  $("#modal_material").modal('show')
+    listar_maquina();
 }
 
 
