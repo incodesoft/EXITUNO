@@ -1508,7 +1508,7 @@ function listar_maquina(maquina){
      $.ajax({
         url: "consulta_maquinas.php",
         type: "POST",
-        data: {maquina},
+        data: {maquina:maquina},
         success: function (x) {
             
             $("#lista_maquina").html(x);
