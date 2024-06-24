@@ -1540,9 +1540,9 @@ function registrarEventos(){
     observaciones = $("#even_observaciones").val();
     nro_isograf =0;
     docentry = 0;
-    maquina = $("#lista_maquina select").val();
+    maquina = $("#nombre_maquinita").val();
     bandera = true;
-    if(maquina ==='Seleccione'){
+    if(maquina ===''){
         bandera= false;
     }
     if(bandera===true){
