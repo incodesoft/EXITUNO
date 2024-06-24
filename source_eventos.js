@@ -8,7 +8,7 @@ function registrarEventos(){
     docentry = 0;
     maquina = $("#codigo_maquinita").val();
     bandera = true;
-    if(maquina ==='Seleccione'){
+    if(maquina ===''){
         bandera= false;
     }
     if(bandera===true){
