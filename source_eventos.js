@@ -74,7 +74,7 @@ function listar_maquina(maquina){
         data: {maquina:maquina},
         success: function (x) {
             
-            $("#lista_maquina").html(x);
+            $("#tabla_matecitox").html(x);
            $(".select2").select2();
 
         },
