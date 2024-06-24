@@ -1497,7 +1497,7 @@ function eventos_of(docentry, nro_isograf) {
 }
 
 
-$(document).on("change", "#maquinix select", function () {
+$(document).on("change", "#selecito_materiales select", function () {
   var maquina = this.value;
    console.log(maquina);
    listar_maquina(maquina);
