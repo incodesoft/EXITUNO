@@ -1493,14 +1493,21 @@ function eventos_of(docentry, nro_isograf) {
   //  $("#iso_evento").val(nro_isograf);
    // $("#doc_evento").val(docentry);
     listar_eventos(docentry, nro_isograf);
-     listar_maquina();
+    listar_maquina();
 }
 
-function listar_maquina(){   
+
+$(document).on("change", "#selecito_materiales select", function () {
+  var maquina = this.value;
+   listar_maquina(maquina);
+});
+
+
+function listar_maquina(maquina){   
      $.ajax({
         url: "consulta_maquinas.php",
         type: "POST",
-        data: null,
+        data: {maquina},
         success: function (x) {
             
             $("#lista_maquina").html(x);
