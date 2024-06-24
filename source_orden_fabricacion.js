@@ -1493,7 +1493,7 @@ function eventos_of(docentry, nro_isograf) {
   //  $("#iso_evento").val(nro_isograf);
    // $("#doc_evento").val(docentry);
     listar_eventos(docentry, nro_isograf);
-    listar_maquina();
+    //listar_maquina();
 }
 
 
