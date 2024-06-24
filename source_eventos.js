@@ -58,15 +58,24 @@ function listar_eventos(){
 
 
 
-function listar_maquina(){   
+$(document).on("change", "#selecito_materiales select", function () {
+  var maquina = this.value;
+   console.log(maquina);
+   listar_maquina(maquina);
+});
+
+
+function listar_maquina(maquina){
+    console.log(maquina);
+    
      $.ajax({
         url: "consulta_maquinas.php",
         type: "POST",
-        data: null,
+        data: {maquina:maquina},
         success: function (x) {
             
-            $("#tabla_matecitox").html(x);
-           //$(".select2").select2();
+            $("#lista_maquina").html(x);
+           $(".select2").select2();
 
         },
         error: function (jqXHR, estado, error) { },
