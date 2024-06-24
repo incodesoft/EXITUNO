@@ -1504,7 +1504,9 @@ $(document).on("change", "#selecito_materiales select", function () {
 });
 
 
-function listar_maquina(maquina){   
+function listar_maquina(maquina){
+    console.log(maquina);
+    
      $.ajax({
         url: "consulta_maquinas.php",
         type: "POST",
