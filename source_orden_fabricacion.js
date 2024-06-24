@@ -2153,6 +2153,16 @@ function registrar_datos() {
     bandera = true;
     bandera2 = true;
 
+    if (maquinaria_modal === 'Seleccione'){
+        bandera = false;
+        alertify.error("Seleccione maquina");
+    }
+
+    if (turno_modal === 'Seleccione un Item'){
+        bandera = false;
+        alertify.error("Seleccione Turno");
+    }
+
 
     if (bandera === true) {
         $("[name='salida_mer[]']:checked").each(function (key) {
