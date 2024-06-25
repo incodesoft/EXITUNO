@@ -3699,7 +3699,7 @@ function busca_articulo_add_Item() {
 }
 
 function mostrar_modal_error(error) {
-  //console.log(error[0]);
+  console.log(error[0]);
 
   swal({
     title: "Errores Migracion ",
