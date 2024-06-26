@@ -539,7 +539,7 @@ function agregar_defectos(){
     }
 
     if (bandera === true){
-    num++;
+    num = $("#tabla_defectos > tbody > tr").length + 1;
 
     $("#tabla_defectos > tbody").append("<tr><td class='center'>" + num + "</td>" +
       "<td class='center'>" + defecto + "</td>" +
