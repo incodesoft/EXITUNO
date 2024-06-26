@@ -2372,48 +2372,11 @@ function registrar_reciboP() {
     modal_fi = $("#modal_fi").val();
     modal_ff = $("#modal_ff").val();
 
-    bandera = true;
+   
     bandera2 = true;
 
-    if (bandera === true) {
-        $("[name='recibito[]']:checked").each(function (key) {
-            var nro_op_isograf = $(this).parents("tr").find('td:eq(1)').text();
-            var tipo = $(this).parents("tr").find('td:eq(2)').text();
-            var nro_producto = $(this).parents("tr").find('td:eq(3)').text();
-            var descripcion = $(this).parents("tr").find('td:eq(4)').text();
-            var cantidad_planificada = $(this).parents("tr").find('td:eq(5)').text();
-            var cantidad_pendiente = $(this).parents("tr").find('td:eq(6)').text();
-            var cantidad_procesar = $(this).parents("tr").find('td:eq(7)').text();
-            var cant_mala =  $(this).parents("tr").find('input[id="cantMala1"]').val();
-            var cant_mala2 = parseFloat(cant_mala);
-
-            // var ingresarcantidad = $(this).parents("tr").find('input[id="cantRecibida"]').val();
-            var almacen = $(this).parents("tr").find("#almacen_re1 option:selected").val();
-            var docentry_cab = $(this).parents("tr").find('td:eq(10)').text();
-            // var ingresarcantidad2 = parseFloat(ingresarcantidad);
-            
-            //var merma = $(this).parents("tr").find('td:eq(11)').text();
-
-            var merma =  $(this).parents("tr").find('input[id="cantMercita"]').val();
-            var merma2 = parseFloat(merma);
-            
-            var minutos = $(this).parents("tr").find('td:eq(12)').text();
-
-
-            // if (0 > ingresarcantidad2) {
-            //     bandera2 = false
-            //     alertify.error('Cantidad no Validad');
-            //     $(this).parents("tr").find('td:eq(6)').css("background-color", "#F67280");
-            // }
-            // if (ingresarcantidad === "") {
-            //     bandera2 = false
-            //     alertify.error('Falta llenar la cantidad');
-            //     $(this).parents("tr").find('td:eq(6)').css("background-color", "#F67280");
-            // }
-
-        });
-
-        if (bandera2 === true) {
+    if (bandera2 === true) {
+        
             $.ajax({
                 url: "inserta_datos_reciboCab.php",
                 type: "POST",
@@ -2436,73 +2399,74 @@ function registrar_reciboP() {
                     if (global == 0) {
                         alertify.error("No inserto");
                     } else {
-                        $("[name='recibito[]']:checked").each(function (key) {
-                            var nro_op_isograf = $(this).parents("tr").find('td:eq(1)').text();
-                            var tipo = $(this).parents("tr").find('td:eq(2)').text();
-                            var nro_producto = $(this).parents("tr").find('td:eq(3)').text();
-                            var descripcion = $(this).parents("tr").find('td:eq(4)').text();
-                            var cantidad_planificada = $(this).parents("tr").find('td:eq(5)').text();
-                            var cantidad_pendiente = $(this).parents("tr").find('td:eq(6)').text();
-                            var cantidad_procesar = $(this).parents("tr").find('td:eq(7)').text();
-                            var cant_mala =  $(this).parents("tr").find('input[id="cantMala1"]').val();
-                            var cant_mala2 = parseFloat(cant_mala);
-                            // var ingresarcantidad = $(this).parents("tr").find('input[id="cantRecibida"]').val();
-                            var almacen = $(this).parents("tr").find("#almacen_re1 option:selected").val();
-                            var docentry_cab = $(this).parents("tr").find('td:eq(10)').text();
-                            // var ingresarcantidad2 = parseFloat(ingresarcantidad);
+                
+                        var unidad_buena = $("#uni_buenas").val();
+                        var unidad_mala = $("#uni_malas").val();
+                        var almacen = $("#almacen_detalle option:selected").val();
+                        var observaciones = $("#uni_observaciones").val();
 
-                            
-                            //var merma = $(this).parents("tr").find('td:eq(11)').text();
+                        
 
-                            var merma =  $(this).parents("tr").find('input[id="cantMercita"]').val();
-                            var merma2 = parseFloat(merma);
-                            
-                            var minutos = $(this).parents("tr").find('td:eq(12)').text();
-
-
-                            $.ajax({
-                                beforeSend: function () { },
-                                url: "inserta_datos_reciboDet.php",
-                                type: "POST",
-                                data:
-                                    "&nro_op_isograf=" +
-                                    nro_op_isograf +
-                                    "&tipo=" +
-                                    tipo +
-                                    "&nro_producto=" +
-                                    nro_producto +
-                                    "&descripcion=" +
-                                    descripcion +
-                                    "&cantidad_planificada=" +
-                                    cantidad_planificada +
-                                    "&cantidad_pendiente=" +
-                                    cantidad_pendiente +
-                                    "&cantidad_procesar=" +
-                                    cantidad_procesar +
-                                    "&cant_mala=" +
-                                    cant_mala2 +
+                        $.ajax({
+                            beforeSend: function () { },
+                            url: "inserta_datos_reciboDet.php",
+                            type: "POST",
+                            data:
+                                    "&modal_op_iso=" +
+                                    modal_op_iso +
+                                    "&unidad_buena=" +
+                                    unidad_buena +
+                                    "&unidad_mala=" +
+                                    unidad_mala +
                                     "&almacen=" +
                                     almacen +
-                                    "&docentry_cab=" +
-                                    docentry_cab +
+                                    "&observaciones=" +
+                                    observaciones +
                                     "&docentry=" +
-                                    global +
-                                    "&merma=" +
-                                    merma2 +
-                                    "&minutos=" +
-                                    minutos,
-                                success: function (data) {
+                                    global,
+                            success: function (data) {
 
-                                    $("#modal_recibo_produc").modal("hide");
-                                    lista_recibo_prod();
+                                $("#modal_recibo_produc").modal("hide");
+                                lista_recibo_prod();
+
+                                
+
+                                 $('#tabla_defectos > tbody > tr').each(function () {
+                                    linea = $(this).find('td').eq(0).html()
+                                    lina2 = linea;
+                                    var line = parseInt(linea);
+
+                                    var codigo = $(this).find('td').eq(1).html();
+                                    var cantidad = $(this).find('td').eq(2).html();
+
+                                
+                                    $.ajax({
+                                        beforeSend: function () {
+                                        },
+                                        url: 'inserta_defectos_recibo.php',
+                                        type: 'POST',
+                                        data: '&line=' + line + '&codigo=' + codigo + '&cantidad=' + cantidad + '&modal_op_iso=' + modal_op_iso + '&global=' + global,
+                                        success: function (data) {
+                                        $("#tabla_defectos > tbody:last").children().remove();
+                                        },
+                                        error: function (jqXHR, estado, error) {
+                                            $("#errores").html('Error... ' + estado + '  ' + error);
+                                        }
+                                    });
                                     
-                                },
 
-                                error: function (jqXHR, estado, error) {
+                                });
 
-                                },
-                            });
+                            },
+
+                            error: function (jqXHR, estado, error) {
+
+                            },
                         });
+
+                        
+
+                   
                         migrar_sap(global, 3)
                     }
                 },
@@ -2510,9 +2474,8 @@ function registrar_reciboP() {
 
                 }
             });
-        }
     }
-
+    
 }
 
 
