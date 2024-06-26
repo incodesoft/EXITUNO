@@ -2657,6 +2657,8 @@ function reg_transformar() {
                 $(this).parents("tr").find("td").css("background-color", "LightGreen");
             });
 
+            $("#btn_ofs").prop('disabled', false);
+
             //cargar_transformer_cab(docentry);
         },
         error: function (jqXHR, estado, error) { },
@@ -2788,6 +2790,8 @@ function reg_2da_explosion() {
                 $(this).prop('checked', true);
                 $(this).parents("tr").find("td").css("background-color", "LightGreen");
             });
+
+             $("#btn_ofs_kho").prop('disabled', false);
 
             //cargar_transformer_cab(docentry);
         },
