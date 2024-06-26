@@ -2571,7 +2571,7 @@ function listado_materiales_transf2(docentry) {
 
         type: "POST",
         data: {
-            docentry,
+            docentry
         },
         success: function (x) {
             $("#tabla_transformer_xd").html(x);
@@ -2585,7 +2585,7 @@ function listado_materiales_transf2(docentry) {
 }
 
 
-function listado_materiales_transf(docentry) {
+function listado_materiales_transf(docentry,codigo) {
     $("#modal_2da_explosion").modal("toggle");
 
     $.ajax({
@@ -2593,7 +2593,7 @@ function listado_materiales_transf(docentry) {
 
         type: "POST",
         data: {
-            docentry,
+            docentry, codigo
         },
         success: function (x) {
             $("#tabla_2da_explosion").html(x);
