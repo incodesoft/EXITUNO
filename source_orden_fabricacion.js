@@ -537,6 +537,11 @@ function agregar_defectos(){
         alertify.error("Seleccione defecto");
         bandera = false;
     }
+    
+    if (cantidad===''){
+        alertify.error("Ingrese Cantidad");
+        bandera = false;
+    }
 
     if (bandera === true){
     num++;
