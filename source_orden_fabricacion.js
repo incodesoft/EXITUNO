@@ -2652,6 +2652,11 @@ function reg_transformar() {
                 order: [[1, 'asc']]
             });
 
+             $("#tablaofs input[id='procesos']").each(function() {
+                $(this).prop('checked', true);
+                $(this).parents("tr").find("td").css("background-color", "LightGreen");
+            });
+
             //cargar_transformer_cab(docentry);
         },
         error: function (jqXHR, estado, error) { },
