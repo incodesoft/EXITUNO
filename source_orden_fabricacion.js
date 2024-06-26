@@ -2784,6 +2784,11 @@ function reg_2da_explosion() {
                 order: [[1, 'asc']]
             });
 
+             $("#tablex input[id='procesos_docito']").each(function() {
+                $(this).prop('checked', true);
+                $(this).parents("tr").find("td").css("background-color", "LightGreen");
+            });
+
             //cargar_transformer_cab(docentry);
         },
         error: function (jqXHR, estado, error) { },
