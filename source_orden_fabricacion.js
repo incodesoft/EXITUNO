@@ -1746,10 +1746,10 @@ function recibo_produccion_cabSQL(iso) {
         success: function (x) {
             //console.log(x);
             var data = x;
-            var idcl = data.split("|");
+            //var idcl = data.split("|");
 
-            $("#modal_fi").val(idcl[0]);
-            $("#modal_ff").val(idcl[1]);
+            //$("#modal_fi").val(idcl[0]);
+            //$("#modal_ff").val(idcl[1]);
           
             
 
