@@ -2399,7 +2399,7 @@ function registrar_reciboP() {
                     });
 
                     global = parseInt(x);
-                    //console.log(global);
+                    console.log(global);
                     //aqui comienza el deta
                     if (global == 0) {
                         alertify.error("No inserto");
@@ -2409,8 +2409,6 @@ function registrar_reciboP() {
                         var unidad_mala = $("#uni_malas").val();
                         var almacen = $("#almacen_detalle option:selected").val();
                         var observaciones = $("#uni_observaciones").val();
-
-                        
 
                         $.ajax({
                             beforeSend: function () { },
