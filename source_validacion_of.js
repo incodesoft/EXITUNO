@@ -429,7 +429,8 @@ function pone_detalle_tabla2(producto) {
                         "<td style='center'>" + data[i].unim + "</td>" +
                         "<td style='center'>" + data[i].Tipos + "</td>" +
                         "<td style='center'>" + data[i].OdtCant + "</td>" +
-                        "<td style='center'>" + data[i].odtcod + "</td>"
+                        "<td style='center'>" + data[i].odtcod + "</td>" +
+                        "<td style='center'>" + data[i].MotNroElem + "</td>"
                     );
 
                 }
@@ -605,6 +606,7 @@ function validar() {
                 var tipo = $(this).find('td').eq(4).html();
                 var cantidad = $(this).find('td').eq(5).html();
                 var isograf = $(this).find('td').eq(6).html();
+                var cox = $(this).find('td').eq(7).html();
 
                 if (codigo === '0') {
 
@@ -614,7 +616,7 @@ function validar() {
                         },
                         url: 'inserta_materiales_det.php',
                         type: 'POST',
-                        data: '&line=' + line + '&codigo=' + codigo + '&descripcion=' + descripcion + '&um=' + um + '&tipo=' + tipo + '&cantidad=' + cantidad + '&isograf=' + isograf + '&global=' + global,
+                        data: '&line=' + line + '&codigo=' + codigo + '&descripcion=' + descripcion + '&um=' + um + '&tipo=' + tipo + '&cantidad=' + cantidad + '&isograf=' + isograf + '&global=' + global + '&cox=' + cox,
                         success: function (data) {
 
 
