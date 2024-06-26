@@ -1638,6 +1638,7 @@ function recibo_produccion_nroisograf(nro_of_isograf) {
                     });*/
                     recibo_produccion_cab(docentry);
                     recibo_produccion_cabSQL(iso);
+                     listar_almacen2();
                 },
                 error: function (jqXHR, estado, error) { },
             });
