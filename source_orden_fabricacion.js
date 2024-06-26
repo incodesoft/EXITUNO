@@ -531,7 +531,14 @@ $(function () {
 function agregar_defectos(){
     var defecto = $("#defecto_list option:selected").val();
     var cantidad = $("#cantidad_defecto").val();
+    bandera = true;
 
+    if (defecto==='Seleccione'){
+        alertify.error("Seleccione defecto");
+        bandera = false;
+    }
+
+    if (bandera === true){
     num++;
 
     $("#tabla_defectos > tbody").append("<tr><td class='center'>" + num + "</td>" +
@@ -540,6 +547,9 @@ function agregar_defectos(){
 
       "<td style='text-align:center'><button class='btn  btn-danger btn-xs delete rounded-circle'><i class='fa fa-trash'></i></button></td>"
     );
+    }
+
+    
 }
 
 function busca_articulo_add() {
