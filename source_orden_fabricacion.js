@@ -827,6 +827,28 @@ function listar_almacen2() {
 }
 
 
+
+
+function listar_defectos() {
+    $(document).ready(function () {
+        $.ajax({
+            beforeSend: function () {
+                $("#defecto_list").html("Cargando ...");
+            },
+            url: 'lista_defectos.php',
+            type: 'POST',
+            data: null,
+            success: function (x) {
+                $("#defecto_list").html(x);
+                $(".select2").select2();
+            },
+            error: function (jqXHR, estado, error) {
+            }
+        });
+    });
+}
+
+
 function obtenerFila3(elemento) {
     var index = $(elemento).closest("tr").index();
     //console.log(index);
@@ -1639,6 +1661,7 @@ function recibo_produccion_nroisograf(nro_of_isograf) {
                     recibo_produccion_cab(docentry);
                     recibo_produccion_cabSQL(iso);
                      listar_almacen2();
+                    listar_defectos();
                 },
                 error: function (jqXHR, estado, error) { },
             });
