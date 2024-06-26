@@ -527,6 +527,22 @@ $(function () {
 });
 
 
+
+function agregar_defectos(){
+    var defecto = $("#defecto_list option:selected").val();
+    var cantidad = $("#cantidad_defecto").val();
+
+    num = 0;
+    num++;
+
+    $("#tabla_defectos > tbody").append("<tr><td class='center'>" + num + "</td>" +
+      "<td class='center'>" + defecto + "</td>" +
+      "<td style='center'>" + cantidad + "</td>" +
+
+      "<td style='text-align:center'><button class='btn  btn-danger btn-xs delete rounded-circle'><i class='fa fa-trash'></i></button></td>"
+    );
+}
+
 function busca_articulo_add() {
 
     $(document).ready(function () {
