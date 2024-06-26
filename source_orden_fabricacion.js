@@ -527,12 +527,11 @@ $(function () {
 });
 
 
-
+ num = 0;
 function agregar_defectos(){
     var defecto = $("#defecto_list option:selected").val();
     var cantidad = $("#cantidad_defecto").val();
 
-    num = 0;
     num++;
 
     $("#tabla_defectos > tbody").append("<tr><td class='center'>" + num + "</td>" +
