@@ -2451,6 +2451,10 @@ function registrar_reciboP() {
                                         data: '&line=' + line + '&codigo=' + codigo + '&cantidad=' + cantidad + '&modal_op_iso=' + modal_op_iso + '&global=' + global,
                                         success: function (data) {
                                         $("#tabla_defectos > tbody:last").children().remove();
+                                        $("#uni_buenas").val(""); 
+                                        $("#uni_malas").val("");
+                                        $("#uni_observaciones").val("");
+                                        $("#cantidad_defecto").val("");
                                         },
                                         error: function (jqXHR, estado, error) {
                                             $("#errores").html('Error... ' + estado + '  ' + error);
