@@ -1066,6 +1066,8 @@ function calcular_total_item2da_explo(input, linea) {
     cantidad_planificada = parseFloat($($("#table_explo2").find("tbody > tr")[fila]).children("td")[6].children[0].value);
     
     var monto = parseFloat((cantidad_base * cantidad_planificada)).toFixed(4);
+
+    console.log(monto);
     $($("#table_explo2").find("tbody > tr")[fila]).children("td")[6].children[0].value = monto
 
      //$('#table_explo2 > tbody > tr').find("td").find('input[id="cantidad_item_explo2"]').val(monto);
