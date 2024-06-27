@@ -2872,8 +2872,8 @@ function listado_materiales_transf2(docentry) {
         },
         error: function (jqXHR, estado, error) { },
     });
-
 }
+
 
 
 function listado_materiales_transf(docentry,codigo) {
@@ -2896,6 +2896,7 @@ function listado_materiales_transf(docentry,codigo) {
     });
 
 }
+
 
 
 function transformar_of2(docentry) {
