@@ -198,9 +198,9 @@ function llena_detalle_elementos(producto, id) {
                         "<td style='center'>" + data[i].Tipos + "</td>" +
 
 
-                        "<td style='text-align:center'><input type='number'  class='form-control pull-right' id='cantidad_base'  autocomplete='off' style='font-size: 12px; text-align:center; color:black; font-weight: bold;' value='1' onchange='calcular_total_item(this," + li + ")' onkeyup='calcular_total_item(this," + li + ");' ></td>" +
+                        "<td style='text-align:center'><input type='text'  class='form-control pull-right' id='cantidad_base'  autocomplete='off' style='font-size: 12px; text-align:center; color:black; font-weight: bold;' value='1' onchange='calcular_total_item(this," + li + ")' onkeyup='calcular_total_item(this," + li + ")' onkeypress='return validar_numero(event)' onselectstart='return false;' oncontextmenu='return false;'></td>" +
 
-                        "<td style='text-align:center'><input type='number'  class='form-control pull-right' id='cantidad_item'  autocomplete='off' style='font-size: 12px; text-align:center; color:black; font-weight: bold;' value='" + precio + "' ></td>" +
+                        "<td style='text-align:center'><input type='text'  class='form-control pull-right' id='cantidad_item'  autocomplete='off' style='font-size: 12px; text-align:center; color:black; font-weight: bold;' value='" + precio + "'  onkeypress='return validar_numero(event)' onselectstart='return false;' oncontextmenu='return false;'></td>" +
 
 
                         "<td style='text-align:center' onchange=''><select class='form-control' onchange='carga_stock(this," + li + ");' style='width: 100%;font-size:12px;' tabindex='-1' aria-hidden='true'  id='almacen_detalle'><option value=''>ELIJA.</option><option value='ALM01' >ALMACEN PRINCIPAL</option><option value='ALM02'>ALMACEN SAGITARIO</option><option value='ALM03' >ALMACEN PRINTS</option><option value='ALM04' >ALMACEN DE IMPORTACION</option><option value='ALM05'>ALMACEN DE CUARENTENA</option><option value='ALM06' SELECTED>ALMACEN DE PRODUCCION</option><option value='ALM07' >ALMACEN DE PRE PRENSA</option><option value='ALM08' >ALMACEN DE CORTE</option><option value='ALM09' >ALMACEN DE IMPRESION</option><option value='ALM10' >ALMACEN DE TROQUELADO</option><option value='ALM11'>ALMACEN DE PEGADO</option><option value='ALM12' >ALMACEN DE FORMADO</option><option value='ALM13' >ALMACEN DE TERMOFORMADO</option><option value='ALM14'>ALMACEN DE SELLADO</option><option value='ALM15' >ALMACEN DE MANUALIDADES</option><option value='ALM16' >ALMACEN DE EMBALAJE</option><option value='ALM17' >ALMACEN DE PRODUCTO TERMINADO</option><option value='ALM18' >ALMACEN DE PT EXTERNO</option><option value='ALM19' >ALMACEN DE PT INMOBILIZADO</option><option value='ALM20' >ALMACEN DE TRANSITO</option></select></td>" +
@@ -229,6 +229,17 @@ function llena_detalle_elementos(producto, id) {
         }
     });
 
+}
+
+
+function validar_numero(event) {
+  console.log(event);
+  var charCode = (event.which) ? event.which : event.keyCode;
+  if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57)) {
+    alertify.error('No puede ingresar letras');
+      return false;
+  }
+  return true;
 }
 
 
