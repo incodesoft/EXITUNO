@@ -557,6 +557,41 @@ function agregar_defectos(){
     
 }
 
+
+
+
+ num2 = 0;
+function agregar_defectos_pt(){
+    var defecto = $("#defecto_list_pt option:selected").val();
+    var cantidad = $("#cantidad_defecto_pt").val();
+    bandera = true;
+
+    if (defecto==='Seleccione'){
+        alertify.error("Seleccione defecto");
+        bandera = false;
+    }
+    
+    if (cantidad===''){
+        alertify.error("Ingrese Cantidad");
+        bandera = false;
+    }
+
+    if (bandera === true){
+    num2++;
+
+    $("#tabla_defectos_pt > tbody").append("<tr><td class='center'>" + num2 + "</td>" +
+      "<td class='center'>" + defecto + "</td>" +
+      "<td style='center'>" + cantidad + "</td>" +
+
+      "<td style='text-align:center'><button class='btn  btn-danger btn-xs delete rounded-circle'><i class='fa fa-trash'></i></button></td>"
+    );
+    }
+
+    
+}
+
+
+
 function busca_articulo_add() {
 
     $(document).ready(function () {
@@ -814,6 +849,125 @@ function listar_almacen() {
     });
 
 }
+
+
+
+function registrar_reciboP_pt() {
+    modal_op_iso = $("#modal_op_iso_pt").val();
+    modal_pro = $("#modal_pro_pt").val();
+    modal_des = $("#modal_des_pt").val();
+    modal_docentry = $("#modal_docentry_pt").val();
+    modal_fi = $("#modal_fi_pt").val();
+    modal_ff = $("#modal_ff_pt").val();
+
+   
+    bandera2 = true;
+
+    if (bandera2 === true) {
+        
+            $.ajax({
+                url: "inserta_datos_reciboCab.php",
+                type: "POST",
+                data: { modal_op_iso: modal_op_iso, modal_pro: modal_pro, modal_des: modal_des, modal_docentry: modal_docentry, modal_fi: modal_fi, modal_ff: modal_ff },
+                success: function (x) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Registro Exitoso',
+                        text: 'El recibo fue registrado.',
+                        showConfirmButton: false, // Oculta el botón "Aceptar"
+                        timer: 2000
+                    }).then(function () {
+                        // Actualizar la página
+                        // location.reload();
+                    });
+
+                    global = parseInt(x);
+                    console.log(global);
+                    //aqui comienza el deta
+                    if (global == 0) {
+                        alertify.error("No inserto");
+                    } else {
+                
+                        var unidad_buena = $("#uni_buenas_pt").val();
+                        var unidad_mala = $("#uni_malas_pt").val();
+                        var almacen = $("#almacen_detalle_pt option:selected").val();
+                        var observaciones = $("#uni_observaciones_pt").val();
+
+                        $.ajax({
+                            beforeSend: function () { },
+                            url: "inserta_datos_reciboDet.php",
+                            type: "POST",
+                            data:
+                                    "&modal_op_iso=" +
+                                    modal_op_iso +
+                                    "&unidad_buena=" +
+                                    unidad_buena +
+                                    "&unidad_mala=" +
+                                    unidad_mala +
+                                    "&almacen=" +
+                                    almacen +
+                                    "&observaciones=" +
+                                    observaciones +
+                                    "&docentry=" +
+                                    global,
+                            success: function (data) {
+
+                                $("#modal_recibo_produc_pt").modal("hide");
+                                lista_recibo_prod();
+
+                                
+
+                                 $('#tabla_defectos_pt > tbody > tr').each(function () {
+                                    linea = $(this).find('td').eq(0).html()
+                                    lina2 = linea;
+                                    var line = parseInt(linea);
+
+                                    var codigo = $(this).find('td').eq(1).html();
+                                    var cantidad = $(this).find('td').eq(2).html();
+
+                                
+                                    $.ajax({
+                                        beforeSend: function () {
+                                        },
+                                        url: 'inserta_defectos_recibo.php',
+                                        type: 'POST',
+                                        data: '&line=' + line + '&codigo=' + codigo + '&cantidad=' + cantidad + '&modal_op_iso=' + modal_op_iso + '&global=' + global,
+                                        success: function (data) {
+                                        $("#tabla_defectos_pt > tbody:last").children().remove();
+                                        $("#uni_buenas_pt").val(""); 
+                                        $("#uni_malas_pt").val("");
+                                        $("#uni_observaciones_pt").val("");
+                                        $("#cantidad_defecto_pt").val("");
+                                        },
+                                        error: function (jqXHR, estado, error) {
+                                            $("#errores").html('Error... ' + estado + '  ' + error);
+                                        }
+                                    });
+                                    
+
+                                });
+
+                            },
+
+                            error: function (jqXHR, estado, error) {
+
+                            },
+                        });
+
+                        
+
+                   
+                        migrar_sap(global, 3)
+                    }
+                },
+                error: function (jqXHR, estado, error) {
+
+                }
+            });
+    }
+    
+}
+
 
 
 
