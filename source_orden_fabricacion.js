@@ -3598,7 +3598,7 @@ function registrar_OFS_2da() {
 
 
 
-function transformar_apt(docentry) {
+function transformar_apt(docentry,tipo) {
     $("#modal_apt").modal("toggle");
 
     $.ajax({
@@ -3606,10 +3606,10 @@ function transformar_apt(docentry) {
 
         type: "POST",
         data: {
-            docentry,
+            docentry
         },
         success: function (x) {
-            cargar_cab_apts(docentry);
+            cargar_cab_apts(docentry,tipo);
             $("#tabla_apt_modal").html(x);
             $("#tablaapt").DataTable({
                 order: [[0, 'asc']]
@@ -3622,13 +3622,13 @@ function transformar_apt(docentry) {
 }
 
 
-function cargar_cab_apts(docentry) {
+function cargar_cab_apts(docentry,tipo) {
     $.ajax({
         url: "buscar_data_of.php",
 
         type: "POST",
         data: {
-            docentry,
+            docentry,tipo
         },
         success: function (x) {
             //console.log(x);
