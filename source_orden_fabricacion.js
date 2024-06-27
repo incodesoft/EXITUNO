@@ -1060,10 +1060,11 @@ function calcular_total_item(input, linea) {
 }
 
 function calcular_total_item2da_explo(input, linea) {
+    console.log(linea);
     var fila = obtenerFila3(input);
     cantidad_base = parseFloat($($("#table_explo2").find("tbody > tr")[fila]).children("td")[5].children[0].value);
     //cantidad_planificada = parseFloat($("#cant_planificada").val());
-    cantidad_planificada = parseFloat($($("#table_explo2").find("tbody > tr")[fila]).children("td")[6].children[0].value);
+    //cantidad_planificada = parseFloat($($("#table_explo2").find("tbody > tr")[fila]).children("td")[6].children[0].value);
     
     var monto = parseFloat((cantidad_base * cantidad_planificada)).toFixed(4);
 
