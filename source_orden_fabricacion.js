@@ -1112,8 +1112,8 @@ function grabar_datos() {
             var codigo = $(this).find('td').eq(2).html();
             var descripcion = $(this).find('td').eq(3).html();
             var tipo = $(this).find('td').eq(4).html();
-            var cant_base = parseFloat($(this).find("td").find('input[id="cantidad_base"]').val());
-            var cant_requerida = parseFloat($(this).find("td").find('input[id="cantidad_item"]').val());
+            var cant_base = $(this).find("td").find('input[id="cantidad_base"]').val();
+            var cant_requerida = $(this).find("td").find('input[id="cantidad_item"]').val();
             var almacen_det = $(this).find("td").find('select[id="almacen_detalle"]').find('option:selected').val();
             var cant_almacen = $(this).find("td").find('input[id="cant_stock"]').val();
             var docentry = $(this).find('td').eq(9).html();
