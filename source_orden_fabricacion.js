@@ -2845,7 +2845,7 @@ function transformar_of(docentry) {
         success: function (x) {
             $("#tabla_transformer").html(x);
             $("#table_transfor").DataTable({
-                order: [[1, 'asc']]
+                order: [[0, 'asc']]
             });
         },
         error: function (jqXHR, estado, error) { },
