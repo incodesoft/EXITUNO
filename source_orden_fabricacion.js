@@ -2029,6 +2029,30 @@ function ver_detalle(docentry) {
 }
 
 
+
+function det_recibo(docentry) {
+    $("#modal_det_recibox").modal("toggle");
+    $.ajax({
+        url: "consulta_det_defectos_re.php",
+
+        type: "POST",
+        data: {
+            docentry,
+        },
+        success: function (x) {
+            $("#tabla_recibo_detx").html(x);
+            $("#tabla_defectos_prid").DataTable({
+                order: [[0, 'asc']]
+            });
+        },
+        error: function (jqXHR, estado, error) { },
+    });
+
+
+}
+
+
+
 function ver_detallePT(docentry) {
     $("#modal_procesar_detalle").modal("toggle");
 
