@@ -1205,7 +1205,7 @@ function recibo_produccion(nro_of_isograf) {
             var idcl2 = data_2.split("|");
             var total = idcl2[0];
 
-            $("#modal_recibo_produc").modal("toggle");
+            $("#modal_recibo_produc_pt").modal("toggle");
 
             $.ajax({
                 url: "consulta_sql_datos.php",
@@ -1227,10 +1227,12 @@ function recibo_produccion(nro_of_isograf) {
                         },
                         success: function (x) {
                             $("#tabla_recibo").html(x);
-                            $("#tabla_recibo_mostrar").DataTable({
+                            /*$("#tabla_recibo_mostrar").DataTable({
                                 order: [[0, 'asc']]
-                            });
-                            recibo_produccion_cab(docentry)
+                            });*/
+                            recibo_produccion_cab_pt(docentry);
+                            listar_almacen2_pt();
+                            listar_defectos_pt();
                         },
                         error: function (jqXHR, estado, error) { },
                     });
@@ -1243,6 +1245,80 @@ function recibo_produccion(nro_of_isograf) {
 
         },
         error: function (jqXHR, estado, error) { },
+    });
+}
+
+
+function listar_almacen2_pt() {
+    $(document).ready(function () {
+        $.ajax({
+            beforeSend: function () {
+                $("#almacen_detalle_pt").html("Recuperando Lista ...");
+            },
+            url: 'lista_almacen_ordenF.php',
+            type: 'POST',
+            data: null,
+            success: function (x) {
+                $("#almacen_detalle_pt").html(x);
+                $(".select2").select2();
+            },
+            error: function (jqXHR, estado, error) {
+            }
+        });
+    });
+}
+
+
+
+function listar_defectos_pt() {
+    $(document).ready(function () {
+        $.ajax({
+            beforeSend: function () {
+                $("#defecto_list_pt").html("Cargando ...");
+            },
+            url: 'lista_defectos.php',
+            type: 'POST',
+            data: null,
+            success: function (x) {
+                $("#defecto_list_pt").html(x);
+                $(".select2").select2();
+            },
+            error: function (jqXHR, estado, error) {
+            }
+        });
+    });
+}
+
+
+
+
+function recibo_produccion_cab_pt(docentry) {
+
+    $.ajax({
+        url: "buscar_data_of.php",
+
+        type: "POST",
+        data: {
+            docentry,
+        },
+        success: function (x) {
+            //console.log(x);
+            var data = x;
+            var idcl = data.split("|");
+            $("#modal_docentry_pt").val(docentry);
+            $("#modal_op_iso_pt").val(idcl[8]);
+            $("#modal_pro_pt").val(idcl[3]);
+            $("#modal_des_pt").val(idcl[5]);
+            $("#modal_estado_pt").val(idcl[2]);
+            $("#modal_fi_pt").val(idcl[10]);
+            $("#modal_ff_pt").val(idcl[11]);
+            $("#modal_maqui_pt").val(idcl[15]);
+            $("#modal_turno_pt").val(idcl[16]);
+            $("#modal_opera_pt").val(idcl[17]);
+
+        },
+        error: function (jqXHR, estado, error) { },
+
     });
 }
 
