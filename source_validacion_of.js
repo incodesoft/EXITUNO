@@ -180,7 +180,7 @@ function llena_elementos(producto){
                         
                             var cantidadActual = parseInt($(this).find('td:eq(4)').text().trim());
                             var nuevaCantidad = cantidadActual + parseInt(data[i].cantidad);
-                            $(this).find('td:eq(4)').text(nuevaCantidad);
+                            //$(this).find('td:eq(4)').text(nuevaCantidad);
                             return false; // Terminar el bucle
                        // }
                     });
