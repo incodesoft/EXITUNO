@@ -3655,7 +3655,7 @@ function cargar_cab_apts_pt(nro_iso,tipo) {
             console.log(x);
             var data = x;
             var idcl = data.split("|");
-            $("#apt_docentry").val(docentry);
+            $("#apt_docentry").val(idcl[0]);
             $("#apt_isograf").val(idcl[8]);
             $("#apt_producto").val(idcl[5]);
 
