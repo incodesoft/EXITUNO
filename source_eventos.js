@@ -101,6 +101,22 @@ function listar_Tipomaquina(){
 
 
 
+function listar_nomEventos(){   
+     $.ajax({
+        url: "consulta_listadoEventx.php",
+        type: "POST",
+        data: null,
+        success: function (x) {
+          $("#list_eventos").html(x);
+          $(".select2").select2();
+
+        },
+        error: function (jqXHR, estado, error) { },
+    });
+}
+
+
+
 
 function busca_maquinas(){
   $("#modal_material").modal('show')
