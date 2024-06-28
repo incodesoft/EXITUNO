@@ -2928,7 +2928,7 @@ function reg_transformar() {
     var docentry = $('#table_transfor > tbody > tr').find('td').eq(1).html();
     var proceso = $('#table_transfor > tbody > tr').find('td').eq(11).html();
     var isograf = $('#table_transfor > tbody > tr').find('td').eq(12).html();
-
+     var tipo = $('#table_transfor > tbody > tr').find('td').eq(5).html();
     //console.log(docentry);
 
     $.ajax({
@@ -2936,7 +2936,7 @@ function reg_transformar() {
 
         type: "POST",
         data: {
-            docentry, proceso, isograf
+            docentry, proceso, isograf,tipo
         },
         success: function (x) {
             $("#tabla_muestra_OFS").html(x);
