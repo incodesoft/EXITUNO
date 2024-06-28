@@ -3629,16 +3629,47 @@ function transformar_apt_pt(nro_iso,tipo) {
 
         type: "POST",
         data: {
-            docentry
+            nro_iso
         },
         success: function (x) {
-            //cargar_cab_apts(docentry,tipo);
+            cargar_cab_apts_pt(nro_iso,tipo);
             $("#tabla_apt_modal").html(x);
             $("#tablaapt").DataTable({
                 order: [[0, 'asc']]
             });
 
 
+        },
+        error: function (jqXHR, estado, error) { },
+    });
+}
+function cargar_cab_apts_pt(nro_iso,tipo) {
+    $.ajax({
+        url: "buscar_data_of_pt.php",
+
+        type: "POST",
+        data: {
+            nro_iso,tipo
+        },
+        success: function (x) {
+            //console.log(x);
+            var data = x;
+            var idcl = data.split("|");
+            $("#apt_docentry").val(docentry);
+            $("#apt_isograf").val(idcl[8]);
+            $("#apt_producto").val(idcl[5]);
+
+            $("#apt_tipo").val(idcl[1]);
+            $("#apt_estado").val(idcl[2]);
+            $("#apt_nroproducto").val(idcl[3]);
+            $("#apt_UM").val(idcl[4]);
+            // $("#apt_cantPlanificada").val(idcl[6]);
+            $("#apt_almacen").val(idcl[7]);
+            $("#apt_fechaOp").val(idcl[9]);
+            $("#apt_fechaInicio").val(idcl[10]);
+            $("#apt_fechafin").val(idcl[11]);
+            $("#apt_merma").val(idcl[12]);
+            $("#apt_cantPlanificada").val(idcl[13]);
         },
         error: function (jqXHR, estado, error) { },
     });
