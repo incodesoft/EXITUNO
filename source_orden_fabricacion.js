@@ -3621,6 +3621,29 @@ function transformar_apt(docentry,tipo) {
     });
 }
 
+function transformar_apt_pt(nro_iso,tipo) {
+    $("#modal_apt").modal("toggle");
+
+    $.ajax({
+        url: "lista_procesos_apt_pt.php",
+
+        type: "POST",
+        data: {
+            docentry
+        },
+        success: function (x) {
+            //cargar_cab_apts(docentry,tipo);
+            $("#tabla_apt_modal").html(x);
+            $("#tablaapt").DataTable({
+                order: [[0, 'asc']]
+            });
+
+
+        },
+        error: function (jqXHR, estado, error) { },
+    });
+}
+
 
 function cargar_cab_apts(docentry,tipo) {
     $.ajax({
