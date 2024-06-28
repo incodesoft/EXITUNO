@@ -30,6 +30,10 @@ function registrarEventos(){
                 }).then(function () {
                       
                 });
+
+                $("#even_observaciones").val("");
+                $("#nombre_maquinita").val("");
+            
             },
             error: function (jqXHR, estado, error) { },
         }); 
