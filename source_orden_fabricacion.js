@@ -541,6 +541,7 @@ $(function () {
  num = 0;
 function agregar_defectos(){
     var defecto = $("#defecto_list option:selected").val();
+    var nom_defecto = $("#defecto_list option:selected").text().trim();
     var cantidad = $("#cantidad_defecto").val();
     bandera = true;
 
@@ -559,6 +560,7 @@ function agregar_defectos(){
 
     $("#tabla_defectos > tbody").append("<tr><td class='center'>" + num + "</td>" +
       "<td class='center'>" + defecto + "</td>" +
+      "<td class='center'>" + nom_defecto + "</td>" +
       "<td style='center'>" + cantidad + "</td>" +
 
       "<td style='text-align:center'><button class='btn  btn-danger btn-xs delete rounded-circle'><i class='fa fa-trash'></i></button></td>"
@@ -574,6 +576,7 @@ function agregar_defectos(){
  num2 = 0;
 function agregar_defectos_pt(){
     var defecto = $("#defecto_list_pt option:selected").val();
+    var nom_defecto = $("#defecto_list_pt option:selected").text().trim();
     var cantidad = $("#cantidad_defecto_pt").val();
     bandera = true;
 
@@ -592,6 +595,7 @@ function agregar_defectos_pt(){
 
     $("#tabla_defectos_pt > tbody").append("<tr><td class='center'>" + num2 + "</td>" +
       "<td class='center'>" + defecto + "</td>" +
+      "<td class='center'>" + nom_defecto + "</td>" +
       "<td style='center'>" + cantidad + "</td>" +
 
       "<td style='text-align:center'><button class='btn  btn-danger btn-xs delete rounded-circle'><i class='fa fa-trash'></i></button></td>"
@@ -934,7 +938,8 @@ function registrar_reciboP_pt() {
                                     var line = parseInt(linea);
 
                                     var codigo = $(this).find('td').eq(1).html();
-                                    var cantidad = $(this).find('td').eq(2).html();
+                                    var nombres = $(this).find('td').eq(2).html();
+                                    var cantidad = $(this).find('td').eq(3).html();
 
                                 
                                     $.ajax({
@@ -942,7 +947,7 @@ function registrar_reciboP_pt() {
                                         },
                                         url: 'inserta_defectos_recibo.php',
                                         type: 'POST',
-                                        data: '&line=' + line + '&codigo=' + codigo + '&cantidad=' + cantidad + '&modal_op_iso=' + modal_op_iso + '&global=' + global,
+                                        data: '&line=' + line + '&codigo=' + codigo + '&nombres=' + nombres + '&cantidad=' + cantidad + '&modal_op_iso=' + modal_op_iso + '&global=' + global,
                                         success: function (data) {
                                         $("#tabla_defectos_pt > tbody:last").children().remove();
                                         $("#uni_buenas_pt").val(""); 
@@ -2712,7 +2717,8 @@ function registrar_reciboP() {
                                     var line = parseInt(linea);
 
                                     var codigo = $(this).find('td').eq(1).html();
-                                    var cantidad = $(this).find('td').eq(2).html();
+                                    var nombres = $(this).find('td').eq(2).html();
+                                    var cantidad = $(this).find('td').eq(3).html();
 
                                 
                                     $.ajax({
@@ -2720,7 +2726,7 @@ function registrar_reciboP() {
                                         },
                                         url: 'inserta_defectos_recibo.php',
                                         type: 'POST',
-                                        data: '&line=' + line + '&codigo=' + codigo + '&cantidad=' + cantidad + '&modal_op_iso=' + modal_op_iso + '&global=' + global,
+                                        data: '&line=' + line + '&codigo=' + codigo + '&nombres=' + nombres + '&cantidad=' + cantidad + '&modal_op_iso=' + modal_op_iso + '&global=' + global,
                                         success: function (data) {
                                         $("#tabla_defectos > tbody:last").children().remove();
                                         $("#uni_buenas").val(""); 
