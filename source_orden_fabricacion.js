@@ -3652,7 +3652,7 @@ function cargar_cab_apts_pt(nro_iso,tipo) {
             nro_iso,tipo
         },
         success: function (x) {
-            //console.log(x);
+            console.log(x);
             var data = x;
             var idcl = data.split("|");
             $("#apt_docentry").val(docentry);
