@@ -679,3 +679,78 @@ function validar() {
 
 
 }
+function ultimo_valor_fila_modelos() {
+    //let tableBody = document.getElementById('tabla_articulos_mod'); 
+    let line = [];
+    $("#tabla_modelos > tbody > tr").each(function () {
+        articulos = parseFloat($(this).find("td").eq(0).html());
+        line.push(articulos)
+        //console.log(articulos);
+    });
+
+    line.sort(function (a, b) { return a - b });
+    cantidad = line.length
+    data = isNaN(line[cantidad - 1]) == true ? 0 : line[cantidad - 1]
+
+    return data;
+}
+}
+
+function llena_elementos(producto){
+     $.ajax({
+        beforeSend: function () {
+        
+        },
+        url: "lista_elementos.php",
+        dataType: 'json',
+        type: 'POST',
+        data: {  producto: producto },
+        success: function (data) {
+            console.log(data);
+            console.log(data.length);
+            if (data == 0) {
+                var n = noty({
+                    text: "No existe el articulo...!",
+                    theme: 'relax',
+                    layout: 'center',
+                    type: 'error',
+                    timeout: 2000,
+                });
+            } else {
+                for (let i = 0; i < data.length; i++) {
+                      var codigo = data[i].iso;
+                   
+                    $('#tabla_elementos tbody tr').each(function () {
+                        var codigoTabla = $(this).find('td:eq(1)').text().trim();
+                        //if (codigoTabla === data[i].iso) {
+
+                            var codigoTabla2 = $(this).find('td:eq(1)').text().trim();
+                        
+                            var cantidadActual = parseInt($(this).find('td:eq(4)').text().trim());
+                            var nuevaCantidad = cantidadActual + parseInt(data[i].cantidad);
+                            //$(this).find('td:eq(4)').text(nuevaCantidad);
+                            return false; // Terminar el bucle
+                       // }
+                    });
+
+
+                    //if (!existeCodigoEnTabla_elemento(codigo)) {
+                        var num =  ultimo_valor_fila_elementos() + 1;
+                        precio = 1;
+                        precio_igv = precio * 1.18;
+                        precioigv_parse = parseFloat(precio_igv).toFixed(4);
+                        li = parseFloat(num - 1).toFixed(0);
+
+                        $("#tabla_elementos > tbody").append("<tr><td class='center'>" + num + "</td>" +
+                            "<td class='center'>" + data[i].iso + "</td>" +
+                            "<td style='center'>" + data[i].cod_elemento + "</td>" +
+                            "<td style='center'>" + data[i].des_element + "</td>" +
+                            "<td style='center'>" + data[i].cantidad + "</td>"
+                        );
+                    //}
+                }
+            }
+        },
+        error: function (jqXHR, estado, error) { },
+    });
+}
