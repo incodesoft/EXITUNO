@@ -46,7 +46,7 @@ $(document).on('click', '#validar', function () {
         document.getElementById('btn_validar').disabled = false;
         llena_detalle(producto);
         pone_detalle_tabla2(producto);
-        llena_elementos(producto);
+        //llena_modelos(producto);
 
 
     } else {
@@ -82,7 +82,7 @@ function actualizarFila_mocito(checkbox) {
    
       checkbox.closest("tr").find("td").css("background-color", "LightGreen");
         llena_detalle(producto);
-        llena_elementos(producto);
+        //llena_elementos(producto);
         llena_modelos(producto);
         pone_detalle_tabla2(producto);
         document.getElementById('btn_validar').disabled = false;
@@ -587,6 +587,8 @@ function validar() {
                         });
                         $("#tabla_articulos > tbody:last").children().remove();
                         $("#tabla_articulos2 > tbody:last").children().remove();
+                        $("#tabla_modelos > tbody:last").children().remove();
+
                         lista_of();
                     },
 
@@ -710,13 +712,7 @@ function llena_modelos(producto){
             console.log(data);
             console.log(data.length);
             if (data == 0) {
-                var n = noty({
-                    text: "No existe el articulo...!",
-                    theme: 'relax',
-                    layout: 'center',
-                    type: 'error',
-                    timeout: 2000,
-                });
+                llena_elementos(producto)
             } else {
                 for (let i = 0; i < data.length; i++) {
                       var codigo = data[i].iso;
