@@ -702,7 +702,7 @@ function llena_modelos(producto){
         beforeSend: function () {
         
         },
-        url: "lista_elementos.php",
+        url: "lista_modelos.php",
         dataType: 'json',
         type: 'POST',
         data: {  producto: producto },
