@@ -695,7 +695,7 @@ function ultimo_valor_fila_modelos() {
 
     return data;
 }
-}
+
 
 function llena_modelos(producto){
      $.ajax({
