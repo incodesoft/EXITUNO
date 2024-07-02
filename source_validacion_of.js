@@ -637,37 +637,71 @@ function validar() {
                 }
 
             });
+            var cantidadFilas = $('#tabla_modelos > tbody > tr').length;
 
+            if (cantidadFilas > 0) {
+               $('#tabla_elemento > tbody > tr').each(function () {
+                    linea = $(this).find('td').eq(0).html()
+                    lina2 = linea;
+                    var line = parseInt(linea);
+                    var isograf = $(this).find('td').eq(1).html();
+                    var codigo = $(this).find('td').eq(2).html();
+                    var desc = $(this).find('td').eq(3).html();
+                    var cantidad = $(this).find('td').eq(4).html();
+    
+                    if (codigo === '0') {
+    
+                    } else {
+                        $.ajax({
+                            beforeSend: function () {
+                            },
+                            url: 'inserta_elementos.php',
+                            type: 'POST',
+                            data: '&line=' + line + '&isograf=' + isograf + '&codigo=' + codigo + '&desc=' + desc + '&cantidad=' + cantidad + '&global=' + global,
+                            success: function (data) {
+    
+    
+                            },
+                            error: function (jqXHR, estado, error) {
+                                $("#errores").html('Error... ' + estado + '  ' + error);
+                            }
+                        });
+                    }
+    
+                });
+            } else {
+               $('#tabla_modelos > tbody > tr').each(function () {
+                    linea = $(this).find('td').eq(0).html()
+                    lina2 = linea;
+                    var line = parseInt(linea);
+                    var isograf = $(this).find('td').eq(1).html();
+                    var codigo = $(this).find('td').eq(2).html();
+                    var desc = $(this).find('td').eq(3).html();
+                    var cantidad = $(this).find('td').eq(4).html();
+    
+                    if (codigo === '0') {
+    
+                    } else {
+                        $.ajax({
+                            beforeSend: function () {
+                            },
+                            url: 'inserta_elementos.php',
+                            type: 'POST',
+                            data: '&line=' + line + '&isograf=' + isograf + '&codigo=' + codigo + '&desc=' + desc + '&cantidad=' + cantidad + '&global=' + global,
+                            success: function (data) {
+    
+    
+                            },
+                            error: function (jqXHR, estado, error) {
+                                $("#errores").html('Error... ' + estado + '  ' + error);
+                            }
+                        });
+                    }
+    
+                });
+            }
 
-            $('#tabla_elementos > tbody > tr').each(function () {
-                linea = $(this).find('td').eq(0).html()
-                lina2 = linea;
-                var line = parseInt(linea);
-                var isograf = $(this).find('td').eq(1).html();
-                var codigo = $(this).find('td').eq(2).html();
-                var desc = $(this).find('td').eq(3).html();
-                var cantidad = $(this).find('td').eq(4).html();
-
-                if (codigo === '0') {
-
-                } else {
-                    $.ajax({
-                        beforeSend: function () {
-                        },
-                        url: 'inserta_elementos.php',
-                        type: 'POST',
-                        data: '&line=' + line + '&isograf=' + isograf + '&codigo=' + codigo + '&desc=' + desc + '&cantidad=' + cantidad + '&global=' + global,
-                        success: function (data) {
-
-
-                        },
-                        error: function (jqXHR, estado, error) {
-                            $("#errores").html('Error... ' + estado + '  ' + error);
-                        }
-                    });
-                }
-
-            });
+            
 
             enviar_correo(global)
         },
