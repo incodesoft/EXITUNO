@@ -83,6 +83,7 @@ function actualizarFila_mocito(checkbox) {
       checkbox.closest("tr").find("td").css("background-color", "LightGreen");
         llena_detalle(producto);
         llena_elementos(producto);
+        llena_modelos(producto);
         pone_detalle_tabla2(producto);
         document.getElementById('btn_validar').disabled = false;
         
@@ -696,7 +697,7 @@ function ultimo_valor_fila_modelos() {
 }
 }
 
-function llena_elementos(producto){
+function llena_modelos(producto){
      $.ajax({
         beforeSend: function () {
         
@@ -720,7 +721,7 @@ function llena_elementos(producto){
                 for (let i = 0; i < data.length; i++) {
                       var codigo = data[i].iso;
                    
-                    $('#tabla_elementos tbody tr').each(function () {
+                    $('#tabla_modelos tbody tr').each(function () {
                         var codigoTabla = $(this).find('td:eq(1)').text().trim();
                         //if (codigoTabla === data[i].iso) {
 
@@ -735,13 +736,13 @@ function llena_elementos(producto){
 
 
                     //if (!existeCodigoEnTabla_elemento(codigo)) {
-                        var num =  ultimo_valor_fila_elementos() + 1;
+                        var num =  ultimo_valor_fila_modelos() + 1;
                         precio = 1;
                         precio_igv = precio * 1.18;
                         precioigv_parse = parseFloat(precio_igv).toFixed(4);
                         li = parseFloat(num - 1).toFixed(0);
 
-                        $("#tabla_elementos > tbody").append("<tr><td class='center'>" + num + "</td>" +
+                        $("#tabla_modelos > tbody").append("<tr><td class='center'>" + num + "</td>" +
                             "<td class='center'>" + data[i].iso + "</td>" +
                             "<td style='center'>" + data[i].cod_elemento + "</td>" +
                             "<td style='center'>" + data[i].des_element + "</td>" +
