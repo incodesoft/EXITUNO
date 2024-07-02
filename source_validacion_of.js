@@ -640,7 +640,7 @@ function validar() {
             var cantidadFilas = $('#tabla_modelos > tbody > tr').length;
 
             if (cantidadFilas > 0) {
-               $('#tabla_elemento > tbody > tr').each(function () {
+               $('#tabla_modelos > tbody > tr').each(function () {
                     linea = $(this).find('td').eq(0).html()
                     lina2 = linea;
                     var line = parseInt(linea);
@@ -670,7 +670,7 @@ function validar() {
     
                 });
             } else {
-               $('#tabla_modelos > tbody > tr').each(function () {
+               $('#tabla_elementos > tbody > tr').each(function () {
                     linea = $(this).find('td').eq(0).html()
                     lina2 = linea;
                     var line = parseInt(linea);
