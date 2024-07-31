@@ -5593,3 +5593,8 @@ function mapa_relaciones(docentry, docentry_cab) {
     });
 }
 
+function eventos_generales() {
+    $("#modal_eventos_pdf").modal("toggle");
+      
+
+}
