@@ -18,7 +18,14 @@ $("#validausr").submit(function (e) {
       data: { usuario: usuario, pass: pass },
       success: function (data) {
         console.log(data);
-        dat = parseInt(data);
+        //dat = parseInt(data);
+        
+        var data2 = data;
+        var idcl = data2.split("|");
+        var dat = idcl[1];
+        var datusuario = idcl[0];
+
+        
         if (dat == 0) {
           swal(
             "Nombre o contraseña invalidos",
@@ -28,7 +35,12 @@ $("#validausr").submit(function (e) {
           );
         } else {
           swal("¡Bienvenido!", "Sistema WEB - EXITUNO", "success");
-          document.location.href = "inicio.php";
+          if (datusuario === '0'){
+            document.location.href = "inicio.php";
+          }else{
+             document.location.href = 'listado_of.php';
+          }
+          
         }
       },
     });
