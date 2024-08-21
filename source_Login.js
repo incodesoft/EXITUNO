@@ -35,11 +35,11 @@ $("#validausr").submit(function (e) {
           );
         } else {
           swal("¡Bienvenido!", "Sistema WEB - EXITUNO", "success");
-          if (datusuario === '0'){
-            document.location.href = "inicio.php";
-          }else{
-             document.location.href = 'listado_of.php';
-          }
+            if (datusuario === '0'){
+              document.location.href = "inicio.php";
+            }else{
+               document.location.href = 'listado_of.php';
+            }
           
         }
       },
