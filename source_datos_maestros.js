@@ -142,10 +142,10 @@ function registrar_datos(){
     bandera = false;
     alertify.error("Ingresar Descripcion");
   }
-  if (num_catalogo === ''){
-    bandera = false;
-    alertify.error("Ingresar # de Catalogo");
-  }
+  // if (num_catalogo === ''){
+  //   bandera = false;
+  //   alertify.error("Ingresar # de Catalogo");
+  // }
   if (codigo_um_compras === ''){
     bandera = false;
     alertify.error("Ingresar codigo UM de Compras");
