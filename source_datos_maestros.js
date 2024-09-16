@@ -119,6 +119,7 @@ function registrar_datos(){
   igv_ventas = $("#igv_ventas option:selected").val();
   cod_um_recuento = $("#cod_um_recuento").val();
   nom_um_recuento = $("#nom_um_recuento").val();
+  peso_articulo = $("#peso_articulo").val();
   if ($('#check_articulo_Inven').prop('checked')) {
     check_inventario = 'YES';
   } else {
@@ -157,6 +158,10 @@ function registrar_datos(){
   if (igv_ventas === ''){
     bandera = false;
     alertify.error("Seleccione IGV de Ventas");
+  }
+  if (peso_articulo === '' || parseFloat(peso_articulo) >0){
+    bandera = false;
+    alertify.error("Peso de Articulo  Invalido");
   }
   if (bandera === true){
     $.ajax({
