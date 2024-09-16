@@ -159,7 +159,7 @@ function registrar_datos(){
     bandera = false;
     alertify.error("Seleccione IGV de Ventas");
   }
-  if (peso_articulo === '' || parseFloat(peso_articulo) >0){
+  if (peso_articulo === '' || parseFloat(peso_articulo) <=0){
     bandera = false;
     alertify.error("Peso de Articulo  Invalido");
   }
