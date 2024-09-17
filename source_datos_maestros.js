@@ -213,21 +213,13 @@ function migrar_sap(docentry, tipo_dc) {
         },
     });
 }
-function handleSelectChange(selector, nextElement, url, resetElements = [], replaceAfter = "") {
+function handleSelectChange(selector, nextElement, url, updateValueFunction, resetElements = []) {
     $(document).on("change", selector, function () {
-        let id = $("#num_articulo").val();
         let originalValue = this.value;
-
-        // Si hay un replaceAfter, recorta el valor actual hasta ese punto
-        if (replaceAfter !== "") {
-            let index = id.indexOf(replaceAfter);
-            if (index !== -1) {
-                id = id.substring(0, index + replaceAfter.length);
-            }
-        }
-
-        // Actualizar el valor de num_articulo concatenando el valor actual
-        $("#num_articulo").val(id + originalValue);
+        
+        // Llamamos a la función que actualizará el valor de num_articulo
+        let updatedValue = updateValueFunction(originalValue);
+        $("#num_articulo").val(updatedValue);
 
         // Reiniciar los elementos dependientes si hay alguno
         resetElements.forEach(function (element) {
@@ -249,7 +241,7 @@ function handleSelectChange(selector, nextElement, url, resetElements = [], repl
                 if (nextElement === "#codigo_sap_articulo") {
                     let numericValue = parseInt(response, 10);
                     let newValue = (numericValue + 1).toString().padStart(response.length, '0');
-                    let finalValue = id + newValue;
+                    let finalValue = updatedValue + newValue;
                     $("#num_articulo").val(finalValue);
                 }
             },
@@ -260,10 +252,26 @@ function handleSelectChange(selector, nextElement, url, resetElements = [], repl
     });
 }
 
+// Función para actualizar el valor de #num_articulo
+function updateNumArticuloForGroup(value) {
+    return value;
+}
+
+function updateNumArticuloForFamily(value) {
+    let groupValue = $("#grupo_articulo select").val();
+    return groupValue + value;
+}
+
+function updateNumArticuloForSubFamily(value) {
+    let groupValue = $("#grupo_articulo select").val();
+    let familyValue = $("#familia_articulo select").val();
+    return groupValue + familyValue + value;
+}
+
 // Configuraciones específicas
-handleSelectChange("#grupo_articulo select", "#familia_articulo", 'lista_familia_grupo_oitm.php', ["#familia_articulo", "#subfamilia_articulo"]);
-handleSelectChange("#familia_articulo select", "#subfamilia_articulo", 'lista_subfamilia_grupo_oitm.php', ["#subfamilia_articulo"], $("#grupo_articulo select").val());
-handleSelectChange("#subfamilia_articulo select", "#codigo_sap_articulo", 'lista_codigo_sap_oitm.php', [], $("#familia_articulo select").val());
+handleSelectChange("#grupo_articulo select", "#familia_articulo", 'lista_familia_grupo_oitm.php', updateNumArticuloForGroup, ["#familia_articulo", "#subfamilia_articulo"]);
+handleSelectChange("#familia_articulo select", "#subfamilia_articulo", 'lista_subfamilia_grupo_oitm.php', updateNumArticuloForFamily, ["#subfamilia_articulo"]);
+handleSelectChange("#subfamilia_articulo select", "#codigo_sap_articulo", 'lista_codigo_sap_oitm.php', updateNumArticuloForSubFamily);
 
 
 
