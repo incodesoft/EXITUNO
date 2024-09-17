@@ -213,82 +213,123 @@ function migrar_sap(docentry, tipo_dc) {
         },
     });
 }
-
-
-
-$(document).on("change", "#grupo_articulo select", function () {
-  var id = this.value
-  $("#num_articulo").val(id);
-
-  $.ajax({
-      beforeSend: function () {
-        $("#familia_articulo").html("Cargando...");
-      },
-      url: 'lista_familia_grupo_oitm.php',
-      type: 'POST',
-      data: {docentry:id},
-      success: function (x) {
-        $("#familia_articulo").html(x);
-        $(".select2").select2();
-      },
-      error: function (jqXHR, estado, error) {
-      }
-    });  
-})
-$(document).on("change", "#familia_articulo select", function () {
-
-  id = $("#num_articulo").val();
-  id2= id + this.value
-  $("#num_articulo").val(id2);
-
-   $.ajax({
-      beforeSend: function () {
-        $("#subfamilia_articulo").html("Cargando...");
-      },
-      url: 'lista_subfamilia_grupo_oitm.php',
-      type: 'POST',
-      data: {docentry:this.value},
-      success: function (x) {
-        $("#subfamilia_articulo").html(x);
-        $(".select2").select2();
-      },
-      error: function (jqXHR, estado, error) {
-      }
-    }); 
-}) 
-$(document).on("change", "#subfamilia_articulo select", function () {
-
-  id = $("#num_articulo").val();
-  id2= id + this.value
-  $("#num_articulo").val(id2);
-
-    $.ajax({
-      beforeSend: function () {
-       // $("#subfamilia_articulo").html("Cargando...");
-      },
-      url: 'lista_codigo_sap_oitm.php',
-      type: 'POST',
-      data: {docentry:id2},
-      success: function (x) {
-        id = $("#num_articulo").val();
-        value= x;
-        let numericValue = parseInt(value, 10);
-        let newValue = (numericValue + 1).toString();
-        
-        // Añadir ceros a la izquierda si es necesario (4 dígitos)
-        while (newValue.length < value.length) {
-            newValue = '0' + newValue;
+function handleSelectChange(selector, nextElement, url, appendValue = false) {
+    $(document).on("change", selector, function () {
+        let id = $("#num_articulo").val();
+        if (appendValue) {
+            id += this.value;
+            $("#num_articulo").val(id);
+        } else {
+            $("#num_articulo").val(this.value);
+            id = this.value;
         }
-        let resultText = `${newValue}`;
-        console.log(resultText)
-         id2= id + resultText
+
+        $.ajax({
+            beforeSend: function () {
+                $(nextElement).html("Cargando...");
+            },
+            url: url,
+            type: 'POST',
+            data: { docentry: id },
+            success: function (response) {
+                $(nextElement).html(response);
+                $(".select2").select2();
+
+                if (nextElement === "#subfamilia_articulo") {
+                    let numericValue = parseInt(response, 10);
+                    let newValue = (numericValue + 1).toString().padStart(response.length, '0');
+                    let finalValue = id + newValue;
+                    $("#num_articulo").val(finalValue);
+                }
+            },
+            error: function (jqXHR, estado, error) {
+                console.error('Error en la solicitud AJAX', error);
+            }
+        });
+    });
+}
+
+// Configuraciones específicas
+handleSelectChange("#grupo_articulo select", "#familia_articulo", 'lista_familia_grupo_oitm.php');
+handleSelectChange("#familia_articulo select", "#subfamilia_articulo", 'lista_subfamilia_grupo_oitm.php', true);
+handleSelectChange("#subfamilia_articulo select", "#codigo_sap_articulo", 'lista_codigo_sap_oitm.php', true);
+
+
+
+
+// $(document).on("change", "#grupo_articulo select", function () {
+//   var id = this.value
+//   $("#num_articulo").val(id);
+
+//   $.ajax({
+//       beforeSend: function () {
+//         $("#familia_articulo").html("Cargando...");
+//       },
+//       url: 'lista_familia_grupo_oitm.php',
+//       type: 'POST',
+//       data: {docentry:id},
+//       success: function (x) {
+//         $("#familia_articulo").html(x);
+//         $(".select2").select2();
+//       },
+//       error: function (jqXHR, estado, error) {
+//       }
+//     });  
+// })
+// $(document).on("change", "#familia_articulo select", function () {
+
+//   id = $("#num_articulo").val();
+//   id2= id + this.value
+//   $("#num_articulo").val(id2);
+
+//    $.ajax({
+//       beforeSend: function () {
+//         $("#subfamilia_articulo").html("Cargando...");
+//       },
+//       url: 'lista_subfamilia_grupo_oitm.php',
+//       type: 'POST',
+//       data: {docentry:this.value},
+//       success: function (x) {
+//         $("#subfamilia_articulo").html(x);
+//         $(".select2").select2();
+//       },
+//       error: function (jqXHR, estado, error) {
+//       }
+//     }); 
+// }) 
+// $(document).on("change", "#subfamilia_articulo select", function () {
+
+//   id = $("#num_articulo").val();
+//   id2= id + this.value
+//   $("#num_articulo").val(id2);
+
+//     $.ajax({
+//       beforeSend: function () {
+//        // $("#subfamilia_articulo").html("Cargando...");
+//       },
+//       url: 'lista_codigo_sap_oitm.php',
+//       type: 'POST',
+//       data: {docentry:id2},
+//       success: function (x) {
+//         id = $("#num_articulo").val();
+//         value= x;
+//         let numericValue = parseInt(value, 10);
+//         let newValue = (numericValue + 1).toString();
         
-          $("#num_articulo").val(id2);
-      },
-      error: function (jqXHR, estado, error) {
-      }
-    });  
-}) 
+//         // Añadir ceros a la izquierda si es necesario (4 dígitos)
+//         while (newValue.length < value.length) {
+//             newValue = '0' + newValue;
+//         }
+//         let resultText = `${newValue}`;
+//         console.log(resultText)
+//          id2= id + resultText
+        
+//           $("#num_articulo").val(id2);
+//       },
+//       error: function (jqXHR, estado, error) {
+//       }
+//     });  
+// }) 
 $(document).on("change", "#grupo_medida select", function () {
   id = this.value;
 
