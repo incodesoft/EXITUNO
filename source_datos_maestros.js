@@ -213,7 +213,7 @@ function migrar_sap(docentry, tipo_dc) {
         },
     });
 }
-function handleSelectChange(selector, nextElement, url, appendValue = false) {
+function handleSelectChange(selector, nextElement, url, appendValue = false, resetElements = []) {
     $(document).on("change", selector, function () {
         let id = $("#num_articulo").val();
         let originalValue = this.value;
@@ -227,6 +227,11 @@ function handleSelectChange(selector, nextElement, url, appendValue = false) {
 
         // Actualizar el valor de num_articulo
         $("#num_articulo").val(id);
+
+        // Reiniciar los elementos dependientes si hay alguno
+        resetElements.forEach(function (element) {
+            $(element).html("").trigger("change");  // Reinicia el valor y desencadena el evento change para limpiar select2
+        });
 
         $.ajax({
             beforeSend: function () {
@@ -255,10 +260,9 @@ function handleSelectChange(selector, nextElement, url, appendValue = false) {
 }
 
 // Configuraciones específicas
-handleSelectChange("#grupo_articulo select", "#familia_articulo", 'lista_familia_grupo_oitm.php');
-handleSelectChange("#familia_articulo select", "#subfamilia_articulo", 'lista_subfamilia_grupo_oitm.php', true);
+handleSelectChange("#grupo_articulo select", "#familia_articulo", 'lista_familia_grupo_oitm.php', false, ["#familia_articulo", "#subfamilia_articulo"]);
+handleSelectChange("#familia_articulo select", "#subfamilia_articulo", 'lista_subfamilia_grupo_oitm.php', true, ["#subfamilia_articulo"]);
 handleSelectChange("#subfamilia_articulo select", "#codigo_sap_articulo", 'lista_codigo_sap_oitm.php', true);
-
 
 
 
