@@ -216,13 +216,17 @@ function migrar_sap(docentry, tipo_dc) {
 function handleSelectChange(selector, nextElement, url, appendValue = false) {
     $(document).on("change", selector, function () {
         let id = $("#num_articulo").val();
+        let originalValue = this.value;
+
+        // Si se debe concatenar el valor del selector actual
         if (appendValue) {
-            id += this.value;
-            $("#num_articulo").val(id);
+            id += originalValue;
         } else {
-            $("#num_articulo").val(this.value);
-            id = this.value;
+            id = originalValue;
         }
+
+        // Actualizar el valor de num_articulo
+        $("#num_articulo").val(id);
 
         $.ajax({
             beforeSend: function () {
@@ -230,12 +234,13 @@ function handleSelectChange(selector, nextElement, url, appendValue = false) {
             },
             url: url,
             type: 'POST',
-            data: { docentry: id },
+            data: { docentry: originalValue },
             success: function (response) {
                 $(nextElement).html(response);
                 $(".select2").select2();
 
-                if (nextElement === "#subfamilia_articulo") {
+                // Solo en el último select hacemos la lógica adicional
+                if (nextElement === "#codigo_sap_articulo") {
                     let numericValue = parseInt(response, 10);
                     let newValue = (numericValue + 1).toString().padStart(response.length, '0');
                     let finalValue = id + newValue;
