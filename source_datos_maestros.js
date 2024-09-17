@@ -213,20 +213,21 @@ function migrar_sap(docentry, tipo_dc) {
         },
     });
 }
-function handleSelectChange(selector, nextElement, url, appendValue = false, resetElements = []) {
+function handleSelectChange(selector, nextElement, url, resetElements = [], replaceAfter = "") {
     $(document).on("change", selector, function () {
         let id = $("#num_articulo").val();
         let originalValue = this.value;
 
-        // Si se debe concatenar el valor del selector actual
-        if (appendValue) {
-            id += originalValue;
-        } else {
-            id = originalValue;
+        // Si hay un replaceAfter, recorta el valor actual hasta ese punto
+        if (replaceAfter !== "") {
+            let index = id.indexOf(replaceAfter);
+            if (index !== -1) {
+                id = id.substring(0, index + replaceAfter.length);
+            }
         }
 
-        // Actualizar el valor de num_articulo
-        $("#num_articulo").val(id);
+        // Actualizar el valor de num_articulo concatenando el valor actual
+        $("#num_articulo").val(id + originalValue);
 
         // Reiniciar los elementos dependientes si hay alguno
         resetElements.forEach(function (element) {
@@ -260,9 +261,10 @@ function handleSelectChange(selector, nextElement, url, appendValue = false, res
 }
 
 // Configuraciones específicas
-handleSelectChange("#grupo_articulo select", "#familia_articulo", 'lista_familia_grupo_oitm.php', false, ["#familia_articulo", "#subfamilia_articulo"]);
-handleSelectChange("#familia_articulo select", "#subfamilia_articulo", 'lista_subfamilia_grupo_oitm.php', true, ["#subfamilia_articulo"]);
-handleSelectChange("#subfamilia_articulo select", "#codigo_sap_articulo", 'lista_codigo_sap_oitm.php', true);
+handleSelectChange("#grupo_articulo select", "#familia_articulo", 'lista_familia_grupo_oitm.php', ["#familia_articulo", "#subfamilia_articulo"]);
+handleSelectChange("#familia_articulo select", "#subfamilia_articulo", 'lista_subfamilia_grupo_oitm.php', ["#subfamilia_articulo"], $("#grupo_articulo select").val());
+handleSelectChange("#subfamilia_articulo select", "#codigo_sap_articulo", 'lista_codigo_sap_oitm.php', [], $("#familia_articulo select").val());
+
 
 
 
