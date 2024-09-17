@@ -143,6 +143,14 @@ function registrar_datos(){
     bandera = false;
     alertify.error("Ingresar Descripcion");
   }
+  if (sub_familia === 'Seleccione un Item'){
+    bandera = false;
+    alertify.error("Seleccione Sub-Familia");
+  }
+   if (familia === 'Seleccione un Item'){
+    bandera = false;
+    alertify.error("Seleccione Familia");
+  }
   // if (num_catalogo === ''){
   //   bandera = false;
   //   alertify.error("Ingresar # de Catalogo");
